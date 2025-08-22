@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plano de Treino - Escalada Esportiva</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f4f8;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+        h1, h2, h3 {
+            color: #1e3a8a;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 8px;
+        }
+        h1 {
+            text-align: center;
+            font-weight: 700;
+        }
+        h2 {
+            margin-top: 30px;
+        }
+        a {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .notes {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #dbeafe;
+            border-left: 5px solid #3b82f6;
+            border-radius: 8px;
+        }
+        .notes h3 {
+            color: #1e3a8a;
+        }
+        .table-section h3 {
+            background-color: #e0e7ff;
+            color: #1e3a8a;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        thead th {
+            background-color: #f8fafc;
+            font-weight: 600;
+            color: #1e3a8a;
+            border-bottom: 2px solid #3b82f6;
+        }
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+        .simple-toggle-btn {
+            background-color: #3b82f6;
+            color: #fff;
+            border: none;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+        .details-row {
+            background-color: #f1f5f9;
+        }
+        .hidden {
+            display: none;
+        }
+        .loading-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #3b82f6;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .btn-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 class="mb-4">Plano de Treino para Escalada Esportiva</h1>
+
+    <p>Este plano de treino foi elaborado para complementar sua escalada, com foco em fortalecer a musculatura essencial (costas, antebraços, core e pernas) e garantir a saúde das suas articulações, especialmente dos joelhos.</p>
+
+    <hr class="my-6">
+
+    <h2 class="mb-4">Estrutura Semanal</h2>
+    <ul>
+        <li><strong>Dia 1:</strong> Força - Puxada e Core</li>
+        <li><strong>Dia 2:</strong> Descanso/Escalada</li>
+        <li><strong>Dia 3:</strong> Força - Empurrada e Pernas (foco em fortalecimento de joelhos)</li>
+        <li><strong>Dia 4:</strong> Descanso/Escalada</li>
+        <li><strong>Dia 5:</strong> Força - Puxada e Core (variações) OU Mobilidade/Cardio Leve</li>
+        <li><strong>Dia 6 e 7:</strong> Descanso/Escalada/Mobilidade</li>
+    </ul>
+    
+    <div class="notes">
+        <h3 class="mt-0">Lembretes Importantes:</h3>
+        <ul>
+            <li><strong>Asma:</strong> Sempre leve sua medicação. Monitore sua respiração e use cardio de baixo impacto (bicicleta, elíptico) para aquecimento.</li>
+            <li><strong>Joelhos:</strong> Mantenha o foco total na técnica para fortalecer sem sobrecarga. Se sentir dor, diminua o peso ou pare o exercício.</li>
+            <li><strong>Recuperação:</strong> O descanso é fundamental para o seu progresso.</li>
+        </ul>
+    </div>
+
+    <hr class="my-6">
+
+    <div class="table-section">
+        <h2 class="mb-4">Treino de Força - Dia de Puxada e Core</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Exercício</th>
+                    <th>Séries x Repetições</th>
+                    <th>Descanso</th>
+                    <th>Vídeo</th>
+                    <th>Detalhes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Puxada na Barra Fixa</td>
+                    <td>3x(6-8)</td>
+                    <td>90s</td>
+                    <td><a href="https://www.youtube.com/watch?v=e0_JPPnPNXo" target="_blank">Link</a></td>
+                    <td class="text-center"><button class="simple-toggle-btn" onclick="toggleDetails(this)">+</button></td>
+                </tr>
+                <tr class="details-row hidden">
+                    <td colspan="5" class="p-4 italic text-gray-600">
+                        Excelente para fortalecer as costas e os braços. Use a máquina de assistência, um elástico ou, se já for forte o suficiente, faça com o peso do corpo. Mantenha o peito aberto e a contração nas costas.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Remada Curvada com Halteres</td>
+                    <td>3x(10-12)</td>
+                    <td>60s</td>
+                    <td><a href="https://www.youtube.com/watch?v=T0cMo0KJXvs" target="_blank">Link</a></td>
+                    <td class="text-center"><button class="simple-toggle-btn" onclick="toggleDetails(this)">+</button></td>
+                </tr>
+                <tr class="details-row hidden">
+                    <td colspan="5" class="p-4 italic text-gray-600">
+                        Fortalece a parte média das costas e ombros. Mantenha as costas retas, incline o tronco para a frente e puxe os halteres em direção ao seu quadril, contraindo as escápulas.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Puxada Alta</td>
+                    <td>3x(10-12)</td>
+                    <td>60s</td>
+                    <td><a href="https://www.tiktok.com/@raquelbenattipersonal/video/7521498320250981688" target="_blank">Link</a></td>
+                    <td class="text-center"><button class="simple-toggle-btn" onclick="toggleDetails(this)">+</button></td>
+                </tr>
+                <tr class="details-row hidden">
+                    <td colspan="5" class="p-4 italic text-gray-600">
+                        Trabalha o latíssimo do dorso, músculo essencial para a puxada na escalada. Puxe a barra em direção ao peito, focando na força das costas e não apenas dos braços.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Rosca Direta com Barra</td>
+                    <td>3x(10-12)</td>
+                    <td>60s</td>
+                    <td><a href="https://www.youtube.com/watch?v=yopIHJ-jr3w" target="_blank">Link</a></td>
+                    <td class="text-center"><button class="simple-toggle-btn" onclick="toggleDetails(this)">+</button></td>
+                </tr>
+                <tr class="details-row hidden">
+                    <td colspan="5" class="p-4 italic text-gray-600">
+                        Foca no bíceps e antebraços, importantes para a força de agarre. Mantenha o tronco parado e os cotovelos fixos ao lado do corpo.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Prancha</td>
+                    <td>3x(45-60s)</td>
+                    <td>30s</td>
+                    <td><a href="https://www.ativo.com/corrida-de-rua/treinamento-de-corrida/prancha-abdominal-importancia-variacoes/" target="_blank">Link</a></td>
+                    <td class="text-center"><button class="simple-toggle-btn" onclick="toggleDetails(this)">+</button></td>
+                </tr>
+                <tr class="details-row hidden">
+                    <td colspan="5" class="p-4 italic text-gray-600">
+                        Fortalece o core (abdômen e lombar), fundamental para a estabilidade do corpo. Mantenha o corpo reto como uma prancha, sem deixar o quadril cair ou subir demais.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Elevação de Pernas no Solo</td>
+                    <td>3x(15-20)</td>
+                    <td>60s</td>
+                    <td><a href="https://www.youtube.com/watch?v=e-STrQ3n_nk" target="_blank">Link</a></td>
+                    <td class="text-center"><button class="simple-toggle-btn" onclick="toggleDetails(this)">+</button></td>
+                </tr>
+                <tr class="details-row hidden">
+                    <td colspan="5" class="p-4 italic text-gray-600">
+                        Excelente para o abdômen. Deite-se e levante as pernas esticadas, ou semi-flexionadas, sem tirar a lombar do chão.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <hr class="my-6">
+
+    <div class="table-section">
+        <h2 class="mb-4">Treino de Força - Dia de Empurrada e Pernas</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Exercício</th>
+                    <th>Séries x Repetições</th>
+                    <th>Descanso</th>
+                    <th>Vídeo</th>
+                    <th>Detalhes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Flexão de Braço</td>
+                    <td>3x(10-15)</td>
+                    <td>60s</td>
+                    <td><a href="https://www.youtube.com/watch?v=TbVWMhyax2U" target="_blank">Link</a></td>
+                    <td class="text-center"><button class="simple-toggle-btn" onclick="toggleDetails(this)">+</button></td>
+                </tr>
+                <tr class="details-row hidden">
+                    <td colspan="5" class="p-4 italic text-gray-600">
+                        Trabalha peito, ombros e tríceps. Mantenha o corpo alinhado da cabeça aos pés. Pode ser adaptada com os joelhos no chão.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Desenvolvimento de Ombro com Halteres</td>
+                    <td>3x(8-12)</td>
+                    <td>60s</td>
+                    <td><a href="https://www.youtube.com/watch?v=Nu1lKrS-Vvw" target="_blank">Link</a></td>
+                    <td class="text-center"><button class="simple-toggle-btn" onclick="toggleDetails(this)">+</button></td>
+                </tr>
+                <tr class="details-row hidden">
+                    <td colspan="5" class="p-4 italic text-gray-600">
+                        Fortalece os ombros. Sente-se ou fique em pé com halteres e empurre-os para cima, acima da cabeça. Mantenha as escápulas estáveis.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Supino Inclinado com Halteres</td>
+                    <td>3x(8-12)</td>
+                    <td>60s</td>
+                    <td><a href="https://www.youtube.com/watch?v=G-i3jMIbDmo" target="_blank">Link</a></td>
+                    <td class="text-center"><button class="simple-toggle-btn" onclick="toggleDetails(this)">+</button></td>
+                </tr>
+                <tr class="details-row hidden">
+                    <td colspan="5" class="p-4 italic text-gray-600">
+                        Foca na parte superior do peito e ombros. Deite-se em um banco inclinado e empurre os halteres para cima. Controle o movimento na descida.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tríceps Testa</td>
+                    <td>3x(10-15)</td>
+                    <td>60s</td>
+                    <td><a href="https://www.youtube.com/watch?v=lWNnQbDVOgk" target="_blank">Link</a></td>
+                    <td class="text-center"><button class="simple-toggle-btn" onclick="toggleDetails(this)">+</button></td>
+                </tr>
+                <tr class="details-row hidden">
+                    <td colspan="5" class="p-4 italic text-gray-600">
+                        Isola o músculo tríceps. Deite-se em um banco, estenda os braços para cima e flexione os cotovelos, levando a barra ou halteres em direção à testa.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Agachamento Livre com Barra</td>
+                    <td>3x(8-10)</td>
+                    <td>90s</td>
+                    <td><a href="https://www.youtube.com/watch?v=6ppjJrbrW7g" target="_blank">Link</a></td>
+                    <td class="text-center"><button class="simple-toggle-btn" onclick="toggleDetails(this)">+</button></td>
+                </tr>
+                <tr class="details-row hidden">
+                    <td colspan="5" class="p-4 italic text-gray-600">
+                        Fundamental para o fortalecimento das pernas e joelhos. Mantenha os pés afastados na largura dos ombros, desça o quadril como se fosse sentar e suba.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Avanço com Halteres</td>
+                    <td>3x(10-12)</td>
+                    <td>60s</td>
+                    <td><a href="https://www.youtube.com/watch?v=gtDkYkwnGQo" target="_blank">Link</a></td>
+                    <td class="text-center"><button class="simple-toggle-btn" onclick="toggleDetails(this)">+</button></td>
+                </tr>
+                <tr class="details-row hidden">
+                    <td colspan="5" class="p-4 italic text-gray-600">
+                        Fortalece quadríceps, glúteos e, especialmente, a estabilidade dos joelhos. Dê um passo grande para a frente, descendo o tronco até que o joelho da frente forme um ângulo de 90 graus.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Cadeira Extensora</td>
+                    <td>3x(12-15)</td>
+                    <td>60s</td>
+                    <td><a href="https://www.youtube.com/watch?v=y6juG3XuRe4" target="_blank">Link</a></td>
+                    <td class="text-center"><button class="simple-toggle-btn" onclick="toggleDetails(this)">+</button></td>
+                </tr>
+                <tr class="details-row hidden">
+                    <td colspan="5" class="p-4 italic text-gray-600">
+                        Isola o quadríceps. Sente-se na máquina e estenda as pernas para cima. É um ótimo exercício de baixo impacto para fortalecer a musculatura frontal da coxa.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Mesa Flexora</td>
+                    <td>3x(10-12)</td>
+                    <td>60s</td>
+                    <td><a href="https://www.youtube.com/watch?v=dMYsB4Eb2BY" target="_blank">Link</a></td>
+                    <td class="text-center"><button class="simple-toggle-btn" onclick="toggleDetails(this)">+</button></td>
+                </tr>
+                <tr class="details-row hidden">
+                    <td colspan="5" class="p-4 italic text-gray-600">
+                        Fortalece os isquiotibiais (parte de trás da coxa). Deite-se na máquina de barriga para baixo e flexione as pernas, levando os calcanhares em direção aos glúteos.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Panturrilha em Pé</td>
+                    <td>3x(15-20)</td>
+                    <td>45s</td>
+                    <td><a href="https://br.physitrack.com/home-exercise-video/alongamento-da-panturrilha%252c-em-p%25c3%25a9" target="_blank">Link</a></td>
+                    <td class="text-center"><button class="simple-toggle-btn" onclick="toggleDetails(this)">+</button></td>
+                </tr>
+                <tr class="details-row hidden">
+                    <td colspan="5" class="p-4 italic text-gray-600">
+                        Trabalha a panturrilha, importante para a estabilidade e impulso. Fique em pé e levante os calcanhares, apoiando-se na ponta dos pés.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <hr class="my-6">
+
+    <div class="table-section">
+        <h2 class="mb-4">Exercícios de Mobilidade</h2>
+        <p class="mb-4">Realize estes exercícios para preparar o corpo para a escalada e prevenir lesões. Faça 10-15 repetições para cada um, a menos que indicado o contrário. A mobilidade é fundamental para a performance e a longevidade no esporte.</p>
+        
+        <h3 class="mt-4">Mobilidade de Dedos e Mãos</h3>
+        <ul>
+            <li>
+                <h3>Apertar e Abrir a Mão</h3>
+                <p>Forme um punho com as mãos e aperte com força por 5 segundos. Em seguida, estenda e separe os dedos o máximo que puder, também por 5 segundos. Repita 10 vezes. Ajuda a aquecer os músculos dos antebraços e dedos.</p>
+            </li>
+            <li>
+                <h3>Alongamento de Dedos</h3>
+                <p>Com a palma da mão virada para cima, use a outra mão para puxar suavemente os dedos para baixo, alongando a palma e os tendões. Mantenha por 20 segundos em cada mão.</p>
+            </li>
+            <li>
+                <h3>Círculos com os Polegares</h3>
+                <p>Com a mão estendida, faça pequenos círculos com os polegares, no sentido horário e anti-horário. 10 repetições em cada sentido para cada mão. Aumenta a mobilidade nas articulações do polegar.</p>
+            </li>
+        </ul>
+
+        <h3 class="mt-4">Mobilidade de Punho</h3>
+        <ul>
+            <li>
+                <h3>Círculos com o Punho</h3>
+                <p>Com os braços estendidos, feche as mãos e faça círculos amplos com os punhos. 10 repetições no sentido horário e 10 no anti-horário. Melhora a amplitude de movimento.</p>
+            </li>
+            <li>
+                <h3>Flexão e Extensão do Punho</h3>
+                <p>Coloque as mãos para a frente, com os dedos apontando para o chão. Use a outra mão para puxar suavemente os dedos para trás, alongando a parte superior do punho. Depois, vire a mão para cima e puxe os dedos para trás. Mantenha cada posição por 20 segundos.</p>
+            </li>
+            <li>
+                <h3>Orações Invertidas</h3>
+                <p>Junte as costas das mãos na frente do peito. Mova os cotovelos para cima até sentir um bom alongamento nos punhos. Mantenha por 20 segundos. Ótimo para a flexibilidade do punho.</p>
+            </li>
+        </ul>
+
+        <h3 class="mt-4">Mobilidade de Ombros</h3>
+        <ul>
+            <li>
+                <h3>Círculos com os Braços</h3>
+                <p>Em pé, faça círculos amplos com os braços para a frente (10 repetições) e para trás (10 repetições). Ajuda a soltar a articulação do ombro.</p>
+            </li>
+            <li>
+                <h3>Alongamento de Braço Cruzado</h3>
+                <p>Puxe um braço esticado em direção ao seu peito usando o outro braço. Mantenha por 20 segundos e troque de lado. Alonga os deltoides e a parte superior das costas.</p>
+            </li>
+            <li>
+                <h3>Passagem com Cabo de Vassoura</h3>
+                <p>Segure um cabo de vassoura (ou um pedaço de corda) com as mãos afastadas. Leve o cabo de vassoura para cima e para trás da cabeça, mantendo os braços o mais retos possível. Faça 10 repetições. Aumenta a mobilidade e estabilidade do ombro.</p>
+            </li>
+        </ul>
+
+        <h3 class="mt-4">Mobilidade de Joelhos</h3>
+        <ul>
+            <li>
+                <h3>Círculos com o Joelho</h3>
+                <p>Sentado, levante uma perna e faça círculos com o joelho. 10 repetições em cada direção. Melhora a lubrificação da articulação.</p>
+            </li>
+            <li>
+                <h3>Alongamento do Quadríceps em Pé</h3>
+                <p>Em pé, segure o seu tornozelo e puxe-o em direção aos glúteos. Mantenha o joelho apontado para o chão e as costas retas. Mantenha por 20 segundos e troque de lado.</p>
+            </li>
+            <li>
+                <h3>Afundo Estático</h3>
+                <p>Dê um passo à frente e abaixe o quadril até que o joelho da frente esteja em um ângulo de 90 graus. Mantenha a posição por 30 segundos, sentindo o alongamento na coxa e no quadril. Troque de perna. Fortalece e alonga a musculatura em torno do joelho.</p>
+            </li>
+        </ul>
+    </div>
+
+    <hr class="my-6">
+
+    <h2 class="mb-4">Geradores de Sugestões ✨</h2>
+    
+    <h3 class="mb-2">Gerador de Plano Alimentar para Escalada</h3>
+    <p class="mb-4">Gere um plano alimentar para um dia de treino ou de recuperação, focado nas necessidades de um escalador. Diga-nos se é um dia de treino ou de descanso e quaisquer outras preferências.</p>
+    <div class="flex flex-col md:flex-row gap-4">
+        <div class="flex-grow">
+            <label for="meal-prompt" class="block text-sm font-medium text-gray-700">Detalhes do Plano Alimentar</label>
+            <textarea id="meal-prompt" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" placeholder="Ex: 'Um dia de treino, com foco em carboidratos para energia e proteína para recuperação muscular.'"></textarea>
+            <div class="btn-wrapper">
+                <button class="mt-2 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-pink-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500" onclick="generateMealPlan()">Gerar Plano Alimentar ✨</button>
+                <div id="loading-meal"></div>
+            </div>
+        </div>
+    </div>
+    <div id="meal-plan-output" class="mt-4 p-4 bg-white rounded-md border border-gray-200 hidden"></div>
+
+    <hr class="my-6">
+
+    <h3 class="mb-2">Gerador de 'Beta' para Vias de Escalada</h3>
+    <p class="mb-4">Descreva as agarras e o estilo da via para obter uma sugestão de sequência de movimentos.</p>
+    <div>
+        <label for="beta-prompt" class="block text-sm font-medium text-gray-700">Descrição da via:</label>
+        <textarea id="beta-prompt" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" placeholder="Ex: 'Uma via com um overhang, com duas pinças e um bidoigt na saída.'"></textarea>
+        <div class="btn-wrapper">
+            <button class="mt-2 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500" onclick="generateBeta()">Gerar 'Beta' ✨</button>
+                <div id="loading-beta"></div>
+            </div>
+        <div id="beta-output" class="mt-4 p-4 bg-white rounded-md border border-gray-200 hidden"></div>
+    </div>
+
+    <hr class="my-6">
+
+    <h3 class="mb-2">Sugestões de Mobilidade e Prevenção de Lesões</h3>
+    <p class="mb-4">Descreva uma área de dor ou uma zona do corpo que quer fortalecer para evitar lesões.</p>
+    <div>
+        <label for="mobility-prompt" class="block text-sm font-medium text-gray-700">Área ou dor:</label>
+        <textarea id="mobility-prompt" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" placeholder="Ex: 'Dor no ombro ao fazer pinça.'"></textarea>
+        <div class="btn-wrapper">
+            <button class="mt-2 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500" onclick="getMobilitySuggestions()">Obter Sugestões ✨</button>
+                <div id="loading-mobility"></div>
+            </div>
+        <div id="mobility-output" class="mt-4 p-4 bg-white rounded-md border border-gray-200 hidden"></div>
+    </div>
+
+</div>
+
+<script>
+    // Utility functions for API calls and retries
+    async function callApiWithBackoff(payload, modelName, outputElement, loadingElement, isJson = false) {
+        const maxRetries = 3;
+        let retries = 0;
+        let delay = 1000;
+        
+        outputElement.classList.remove('hidden');
+        outputElement.innerHTML = '';
+        loadingElement.innerHTML = '<div class="loading-spinner"></div>';
+        
+        while (retries < maxRetries) {
+            try {
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
+                
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                if (response.status === 429) {
+                    retries++;
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    delay *= 2;
+                    continue;
+                }
+                
+                if (!response.ok) {
+                    throw new Error(`Erro na API: ${response.status} ${response.statusText}`);
+                }
+
+                const result = await response.json();
+                
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    if (isJson) {
+                        return JSON.parse(text);
+                    } else {
+                        return text;
+                    }
+                } else {
+                    throw new Error('Resposta inesperada da API.');
+                }
+            } catch (error) {
+                retries++;
+                console.error('API call failed:', error);
+                if (retries >= maxRetries) {
+                    throw error;
+                }
+                await new Promise(resolve => setTimeout(resolve, delay));
+                delay *= 2;
+            }
+        }
+    }
+
+    // Function to generate meal plan using structured response
+    async function generateMealPlan() {
+        const userPrompt = document.getElementById('meal-prompt').value;
+        const outputElement = document.getElementById('meal-plan-output');
+        const loadingElement = document.getElementById('loading-meal');
+
+        const basePrompt = `Crie um plano alimentar detalhado para um dia de treino focado em escalada, considerando as seguintes especificações: ${userPrompt}. Forneça o plano como uma lista de refeições, incluindo 'Pequeno-Almoço', 'Almoço', 'Jantar' e 'Lanches'. Para cada refeição, liste os alimentos e a razão nutricional para a sua inclusão.`;
+        
+        let chatHistory = [];
+        chatHistory.push({ role: "user", parts: [{ text: basePrompt }] });
+
+        const payload = {
+            contents: chatHistory,
+            generationConfig: {
+                responseMimeType: "application/json",
+                responseSchema: {
+                    type: "OBJECT",
+                    properties: {
+                        "dia": { "type": "STRING", "description": "Resumo do dia de treino/descanso." },
+                        "planoAlimentar": {
+                            "type": "ARRAY",
+                            "items": {
+                                "type": "OBJECT",
+                                "properties": {
+                                    "refeicao": { "type": "STRING" },
+                                    "alimentos": {
+                                        "type": "ARRAY",
+                                        "items": { "type": "STRING" }
+                                    },
+                                    "beneficio": { "type": "STRING" }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        try {
+            const mealPlan = await callApiWithBackoff(payload, "gemini-2.5-flash-preview-05-20", outputElement, loadingElement, true);
+            let htmlOutput = `<h3 class="font-bold text-lg mb-2">${mealPlan.dia}</h3>`;
+            mealPlan.planoAlimentar.forEach(meal => {
+                htmlOutput += `
+                    <div class="meal-plan-item">
+                        <h4>${meal.refeicao}</h4>
+                        <p class="text-sm"><strong>Alimentos:</strong> ${meal.alimentos.join(', ')}</p>
+                        <p class="text-sm"><strong>Benefício:</strong> ${meal.beneficio}</p>
+                    </div>
+                `;
+            });
+            outputElement.innerHTML = htmlOutput;
+        } catch (error) {
+            outputElement.innerHTML = `<p class="text-red-500">Erro ao gerar o plano alimentar. Tente novamente mais tarde.</p>`;
+        } finally {
+            loadingElement.innerHTML = '';
+        }
+    }
+
+    // New function to generate climbing beta
+    async function generateBeta() {
+        const userPrompt = document.getElementById('beta-prompt').value;
+        const outputElement = document.getElementById('beta-output');
+        const loadingElement = document.getElementById('loading-beta');
+
+        const prompt = `Como um escalador experiente, crie um 'beta' (sequência de movimentos) para uma via de escalada com as seguintes características: ${userPrompt}. Seja específico sobre os movimentos e a técnica, como se estivesse a descrever a via para um amigo.`;
+
+        let chatHistory = [];
+        chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+        const payload = { contents: chatHistory };
+
+        try {
+            const betaText = await callApiWithBackoff(payload, "gemini-2.5-flash-preview-05-20", outputElement, loadingElement);
+            outputElement.innerHTML = `<p class="whitespace-pre-wrap">${betaText}</p>`;
+        } catch (error) {
+            outputElement.innerHTML = `<p class="text-red-500">Erro ao gerar a beta. Tente novamente mais tarde.</p>`;
+        } finally {
+            loadingElement.innerHTML = '';
+        }
+    }
+
+    // New function to get mobility suggestions
+    async function getMobilitySuggestions() {
+        const userPrompt = document.getElementById('mobility-prompt').value;
+        const outputElement = document.getElementById('mobility-output');
+        const loadingElement = document.getElementById('loading-mobility');
+
+        const prompt = `Para um escalador com o seguinte problema ou área de foco: ${userPrompt}, forneça sugestões de exercícios de mobilidade, alongamentos ou dicas para prevenção de lesões. Formate a resposta com títulos para cada secção (e.g., Aquecimento, Exercícios de Mobilidade, Dicas de Prevenção).`;
+
+        let chatHistory = [];
+        chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+        const payload = { contents: chatHistory };
+
+        try {
+            const suggestionsText = await callApiWithBackoff(payload, "gemini-2.5-flash-preview-05-20", outputElement, loadingElement);
+            outputElement.innerHTML = `<div class="prose max-w-none"><p class="whitespace-pre-wrap">${suggestionsText}</p></div>`;
+        } catch (error) {
+            outputElement.innerHTML = `<p class="text-red-500">Erro ao obter sugestões. Tente novamente mais tarde.</p>`;
+        } finally {
+            loadingElement.innerHTML = '';
+        }
+    }
+
+    // JavaScript to handle the toggle functionality
+    function toggleDetails(button) {
+        const row = button.closest('tr');
+        const detailsRow = row.nextElementSibling;
+        
+        if (detailsRow.classList.contains('hidden')) {
+            detailsRow.classList.remove('hidden');
+            button.textContent = '−';
+        } else {
+            detailsRow.classList.add('hidden');
+            button.textContent = '+';
+        }
+    }
+</script>
+
+</body>
+</html>
+
