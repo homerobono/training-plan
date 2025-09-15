@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plano de Treino V26</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+  <link rel="icon" type="image/x-icon" href="/favicon.ico"><title>Plano de Treino V28</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,6 +57,8 @@
             border-radius: 0;
             border-bottom: none;
             border-top: none;
+            border-left: none;
+            border-right: none;
         }
         .day-card {
             min-width: 70px;
@@ -65,12 +67,6 @@
             text-align: center;
             cursor: pointer;
             transition: background-color 0.2s;
-            border-right: 2px solid #ccc;
-            border-bottom: none;
-            border-top: none;
-        }
-        .day-card:last-child {
-            border-right: none;
         }
         .day-card:hover {
             opacity: 0.8;
@@ -422,6 +418,16 @@
                         </td>
                     </tr>
                     <tr class="toggle-row" onclick="toggleDetails(this, event)">
+                        <td class="exercise-name">Stiff com Halteres</td>
+                        <td>3x(10-12) - 60s</td>
+                        <td><input type="text" data-exercise-id="carga-stiff" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border rounded-md focus:outline-none focus:ring focus:border-blue-300"></td>
+                    </tr>
+                    <tr class="details-row hidden">
+                        <td colspan="3" class="p-4 italic text-gray-600">
+                            <p>Foco nos isquiotibiais (parte de trás da coxa) e glúteos. Mantenha as pernas semi-flexionadas e desça o tronco com as costas retas, sentindo o alongamento na parte posterior da coxa.</p>
+                        </td>
+                    </tr>
+                    <tr class="toggle-row" onclick="toggleDetails(this, event)">
                         <td class="exercise-name">Panturrilha em Pé</td>
                         <td>3-4x(15-20) - 45s</td>
                         <td><input type="text" data-exercise-id="carga-panturrilha-pe" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border rounded-md focus:outline-none focus:ring focus:border-blue-300"></td>
@@ -756,5 +762,3 @@
 
 </body>
 </html>
-
-eof
