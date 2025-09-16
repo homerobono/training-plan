@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-  <link rel="icon" type="image/x-icon" href="training-plan/favicon.ico"><title>Plano de Treino V28</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>Plano de Treino V28</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,7 +12,7 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            line-height: 1.6;
+            line-height: 1.5;
             background-color: #ffffff;
             color: #1a1a1a;
             padding: 0;
@@ -21,7 +21,7 @@
             width: 100%;
             min-height: 100vh;
             background: #ffffff;
-            padding: 32px;
+            padding: 16px;
             box-sizing: border-box;
         }
         h1, h2, h3 {
@@ -29,44 +29,39 @@
         }
         h1 {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            margin-bottom: 1rem;
             text-transform: uppercase;
             color: #e74c3c;
         }
         h2 {
-            font-size: 1.8rem;
-            margin-top: 2rem;
-            border-bottom: 4px solid;
+            font-size: 1.5rem;
+            margin-top: 1.5rem;
             padding-bottom: 8px;
             text-transform: uppercase;
         }
-        h2#resumo-semanal { border-color: #34495e; color: #34495e; }
-        h2#forca-costas-biceps { border-color: #c0392b; color: #c0392b; }
-        h2#forca-peito-ombros { border-color: #e67e22; color: #e67e22; }
-        h2#forca-pernas { border-color: #2980b9; color: #2980b9; }
-        h2#mobilidade { border-color: #8e44ad; color: #8e44ad; }
-        h2#ferramentas { border-color: #7f8c8d; color: #7f8c8d; }
-        .scroll-container-days {
-            display: flex;
-            overflow-x: auto;
-            white-space: nowrap;
-            padding-bottom: 8px;
-            -webkit-overflow-scrolling: touch;
-            border: 2px solid #ccc;
-            border-radius: 0;
-            border-bottom: none;
-            border-top: none;
-            border-left: none;
-            border-right: none;
+        h2#resumo-semanal { color: #34495e; }
+        h2#forca-costas-biceps { color: #c0392b; }
+        h2#forca-peito-ombros { color: #e67e22; }
+        h2#forca-pernas { color: #2980b9; }
+        h2#mobilidade { color: #8e44ad; }
+        h2#ferramentas { color: #7f8c8d; }
+        
+        .week-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0;
+            align-items: stretch;
         }
         .day-card {
-            min-width: 70px;
-            flex-shrink: 0;
-            padding: 8px;
+            padding: 8px 12px; /* Espaçamento lateral bastante aumentado */
             text-align: center;
             cursor: pointer;
             transition: background-color 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
         }
         .day-card:hover {
             opacity: 0.8;
@@ -74,46 +69,40 @@
         .day-card .day-name {
             font-weight: 700;
             text-transform: uppercase;
-            font-size: 0.875rem;
+            font-size: 0.8rem;
         }
         .day-card .activity {
-            font-size: 0.65rem;
+            font-size: 0.7rem;
             white-space: normal;
+            line-height: 1.1;
         }
         .day-card.forca-costas-biceps-bg { background-color: #c0392b; color: #ffffff;}
         .day-card.forca-peito-ombros-bg { background-color: #e67e22; color: #ffffff; }
         .day-card.forca-pernas-bg { background-color: #2980b9; color: #ffffff; }
-        .day-card.descanso-bg { background-color: #ffffff; color: #8e44ad; }
-        .day-card.mtb-bg { background-color: #ffffff; color: #1a1a1a; }
-        .day-card.escalada-bg { background-color: #ffffff; color: #1a1a1a; }
+        .day-card.descanso-bg { background-color: #f0f0f0; color: #8e44ad; }
+        .day-card.mtb-bg { background-color: #f0f0f0; color: #1a1a1a; }
+        .day-card.escalada-bg { background-color: #f0f0f0; color: #1a1a1a; }
         
-        .table-section h3 {
-            background-color: #e0e0e0;
-            color: #1a1a1a;
-            padding: 1rem;
-            border: 2px solid #ccc;
-            margin-bottom: 1rem;
-            border-radius: 0;
-        }
         table {
             width: 100%;
             border-collapse: collapse;
+            margin-top: 1rem;
         }
         th, td {
-            padding: 8px;
+            padding: 6px;
             text-align: left;
-            border-bottom: 1px solid #ddd;
-            font-size: 0.875rem;
+            font-size: 0.8rem;
             word-wrap: break-word;
+            border-bottom: 1px solid #eee;
         }
-        .forca-costas-biceps-section thead th { background-color: #c0392b; color: white; }
-        .forca-peito-ombros-section thead th { background-color: #e67e22; color: white; }
-        .forca-pernas-section thead th { background-color: #2980b9; color: white; }
-        .mobilidade-section thead th { background-color: #8e44ad; color: white; }
-        
         tbody tr:last-child td {
             border-bottom: none;
         }
+        .forca-costas-biceps-section thead th { background-color: #c0392b; color: white;}
+        .forca-peito-ombros-section thead th { background-color: #e67e22; color: white;}
+        .forca-pernas-section thead th { background-color: #2980b9; color: white;}
+        .mobilidade-section thead th { background-color: #8e44ad; color: white;}
+        
         .toggle-row {
             cursor: pointer;
             transition: background-color 0.2s ease-in-out;
@@ -147,9 +136,9 @@
         }
         .prompt-textarea {
             background-color: #f9f9f9;
-            border: 2px solid #ddd;
+            border: 1px solid #ddd;
             color: #1a1a1a;
-            border-radius: 0;
+            padding: 6px;
         }
         .prompt-textarea::placeholder {
             color: #999;
@@ -157,36 +146,58 @@
         .button-primary {
             background-color: #e74c3c;
             color: #ffffff;
-            font-weight: 700;
+            font-weight: 600;
+            font-size: 0.875rem;
+            padding: 8px 12px;
+            border: none;
         }
         .button-primary:hover {
             background-color: #c0392b;
         }
         .exercise-name {
-            font-weight: 700;
-            font-size: 0.9rem;
+            font-weight: 600;
+            font-size: 0.85rem;
             color: #1a1a1a;
+        }
+        .collapsible-title {
+            cursor: pointer;
+            position: relative;
+            padding-right: 35px;
+        }
+        .collapsible-title::after {
+            content: '';
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            width: 0;
+            height: 0;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-left: 6px solid; /* A cor será herdada */
+            transform: translateY(-50%) rotate(0deg);
+            transition: transform 0.2s ease-in-out;
+        }
+        .collapsible-title.expanded::after {
+            transform: translateY(-50%) rotate(90deg);
         }
     </style>
 </head>
 <body>
 
-<div class="container p-8 mx-auto">
+<div class="container p-4 mx-auto">
     <div class="max-w-4xl mx-auto">
         <h1>PLANO DE TREINO</h1>
-        <p class="mb-6 text-center text-gray-700">Este plano foi pensado para otimizar seus treinos de força, garantindo progressão e recuperação adequadas.</p>
-
-        <hr class="my-6 border-t-2 border-gray-300">
+        <p class="mb-4 text-center text-sm text-gray-700">Este plano foi pensado para otimizar seus treinos de força, garantindo progressão e recuperação adequadas.</p>
 
         <h2 id="resumo-semanal">RESUMO SEMANAL</h2>
-        <div class="scroll-container-days">
+        <div class="week-grid mb-4">
             <a href="#mobilidade" class="day-card descanso-bg">
                 <p class="day-name">Seg</p>
                 <p class="activity">Descanso</p>
             </a>
             <a href="#forca-costas-biceps" class="day-card forca-costas-biceps-bg">
                 <p class="day-name">Ter</p>
-                <p class="activity">Costas e Bíceps</p>
+                <p class="activity">Costas<br>e Bíceps</p>
             </a>
             <a href="#mobilidade" class="day-card descanso-bg">
                 <p class="day-name">Qua</p>
@@ -194,7 +205,7 @@
             </a>
             <a href="#forca-peito-ombros" class="day-card forca-peito-ombros-bg">
                 <p class="day-name">Qui</p>
-                <p class="activity">Peito e Ombros</p>
+                <p class="activity">Peito<br>e Ombros</p>
             </a>
             <a href="#forca-pernas" class="day-card forca-pernas-bg">
                 <p class="day-name">Sex</p>
@@ -202,23 +213,21 @@
             </a>
             <div class="day-card mtb-bg">
                 <p class="day-name">Sáb</p>
-                <p class="activity">MTB</p>
+                <img src="bike.svg" alt="MTB" class="w-6 h-6 mx-auto">
             </div>
             <div class="day-card escalada-bg">
                 <p class="day-name">Dom</p>
-                <p class="activity">Escalada</p>
+                <img src="climb.svg" alt="Escalada" class="w-6 h-6 mx-auto">
             </div>
         </div>
         
-        <hr class="my-6 border-t-2 border-gray-300">
-        
-        <div class="table-section forca-costas-biceps-section">
+        <div class="forca-costas-biceps-section">
             <h2 id="forca-costas-biceps">TREINO DE FORÇA: COSTAS E BÍCEPS</h2>
-            <table>
+            <table class="collapsible-content">
                 <thead>
                     <tr>
                         <th>Exercício</th>
-                        <th>Séries, Repetições e Descanso</th>
+                        <th>Sér x Rep - Desc</th>
                         <th>Carga</th>
                     </tr>
                 </thead>
@@ -226,76 +235,74 @@
                     <tr class="toggle-row" onclick="toggleDetails(this, event)">
                         <td class="exercise-name">Puxada na Barra Fixa</td>
                         <td>3-4x(6-8) - 90s</td>
-                        <td><input type="text" data-exercise-id="carga-puxada-barra-fixa" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border rounded-md focus:outline-none focus:ring focus:border-blue-300"></td>
+                        <td><input type="text" data-exercise-id="carga-puxada-barra-fixa" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border focus:outline-none focus:ring focus:border-blue-300"></td>
                     </tr>
                     <tr class="details-row hidden">
-                        <td colspan="3" class="p-4 italic text-gray-600">
+                        <td colspan="3" class="p-4 italic text-gray-600 text-sm">
                             Excelente para fortalecer as costas e os braços. Use a máquina de assistência, um elástico ou, se já for forte o suficiente, faça com o peso do corpo. Mantenha o peito aberto e a contração nas costas.
                         </td>
                     </tr>
                     <tr class="toggle-row" onclick="toggleDetails(this, event)">
                         <td class="exercise-name">Remada Curvada com Halteres</td>
                         <td>3-4x(10-12) - 60s</td>
-                        <td><input type="text" data-exercise-id="carga-remada-curvada-halteres" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border rounded-md focus:outline-none focus:ring focus:border-blue-300"></td>
+                        <td><input type="text" data-exercise-id="carga-remada-curvada-halteres" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border focus:outline-none focus:ring focus:border-blue-300"></td>
                     </tr>
                     <tr class="details-row hidden">
-                        <td colspan="3" class="p-4 italic text-gray-600">
+                        <td colspan="3" class="p-4 italic text-gray-600 text-sm">
                             Fortalece a parte média das costas e ombros. Mantenha as costas retas, incline o tronco para a frente e puxe os halteres em direção ao seu quadril, contraindo as escápulas.
                         </td>
                     </tr>
                     <tr class="toggle-row" onclick="toggleDetails(this, event)">
                         <td class="exercise-name">Puxada Alta</td>
                         <td>3-4x(10-12) - 60s</td>
-                        <td><input type="text" data-exercise-id="carga-puxada-alta" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border rounded-md focus:outline-none focus:ring focus:border-blue-300"></td>
+                        <td><input type="text" data-exercise-id="carga-puxada-alta" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border focus:outline-none focus:ring focus:border-blue-300"></td>
                     </tr>
                     <tr class="details-row hidden">
-                        <td colspan="3" class="p-4 italic text-gray-600">
+                        <td colspan="3" class="p-4 italic text-gray-600 text-sm">
                             Trabalha o latíssimo do dorso, músculo essencial para a puxada na escalada. Puxe a barra em direção ao peito, focando na força das costas e não apenas dos braços.
                         </td>
                     </tr>
                     <tr class="toggle-row" onclick="toggleDetails(this, event)">
                         <td class="exercise-name">Remada Sentada na Máquina</td>
                         <td>3-4x(10-12) - 60s</td>
-                        <td><input type="text" data-exercise-id="carga-remada-sentada-maquina" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border rounded-md focus:outline-none focus:ring focus:border-blue-300"></td>
+                        <td><input type="text" data-exercise-id="carga-remada-sentada-maquina" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border focus:outline-none focus:ring focus:border-blue-300"></td>
                     </tr>
                     <tr class="details-row hidden">
-                        <td colspan="3" class="p-4 italic text-gray-600">
+                        <td colspan="3" class="p-4 italic text-gray-600 text-sm">
                             Complementa a remada curvada, fortalecendo a região média e alta das costas. Mantenha o tronco reto e puxe o peso em direção ao abdômen, contraindo as escápulas.
                         </td>
                     </tr>
                     <tr class="toggle-row" onclick="toggleDetails(this, event)">
                         <td class="exercise-name">Rosca Direta com Barra</td>
                         <td>3-4x(10-12) - 60s</td>
-                        <td><input type="text" data-exercise-id="carga-rosca-direta" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border rounded-md focus:outline-none focus:ring focus:border-blue-300"></td>
+                        <td><input type="text" data-exercise-id="carga-rosca-direta" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border focus:outline-none focus:ring focus:border-blue-300"></td>
                     </tr>
                     <tr class="details-row hidden">
-                        <td colspan="3" class="p-4 italic text-gray-600">
+                        <td colspan="3" class="p-4 italic text-gray-600 text-sm">
                             Foca no bíceps e antebraços, importantes para a força de agarre. Mantenha o tronco parado e os cotovelos fixos ao lado do corpo.
                         </td>
                     </tr>
                     <tr class="toggle-row" onclick="toggleDetails(this, event)">
                         <td class="exercise-name">Prancha</td>
                         <td>3-4x(45-60s) - 30s</td>
-                        <td><input type="text" data-exercise-id="carga-prancha" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border rounded-md focus:outline-none focus:ring focus:border-blue-300"></td>
+                        <td><input type="text" data-exercise-id="carga-prancha" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border focus:outline-none focus:ring focus:border-blue-300"></td>
                     </tr>
                     <tr class="details-row hidden">
-                        <td colspan="3" class="p-4 italic text-gray-600">
+                        <td colspan="3" class="p-4 italic text-gray-600 text-sm">
                             Fortalece o core (abdômen e lombar), fundamental para a estabilidade do corpo. Mantenha o corpo reto como uma prancha, sem deixar o quadril cair ou subir demais.
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-
-        <hr class="my-6 border-t-2 border-gray-300">
         
-        <div class="table-section forca-peito-ombros-section">
+        <div class="forca-peito-ombros-section">
             <h2 id="forca-peito-ombros">TREINO DE FORÇA: PEITO E OMBROS</h2>
-            <table>
+            <table class="collapsible-content">
                 <thead>
                     <tr>
                         <th>Exercício</th>
-                        <th>Séries, Repetições e Descanso</th>
+                        <th>Sér x Rep - Desc</th>
                         <th>Carga</th>
                     </tr>
                 </thead>
@@ -303,60 +310,60 @@
                     <tr class="toggle-row" onclick="toggleDetails(this, event)">
                         <td class="exercise-name">Flexão de Braço</td>
                         <td>3-4x(10-15) - 60s</td>
-                        <td><input type="text" data-exercise-id="carga-flexao-braco" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border rounded-md focus:outline-none focus:ring focus:border-blue-300"></td>
+                        <td><input type="text" data-exercise-id="carga-flexao-braco" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border focus:outline-none focus:ring focus:border-blue-300"></td>
                     </tr>
                     <tr class="details-row hidden">
-                        <td colspan="3" class="p-4 italic text-gray-600">
+                        <td colspan="3" class="p-4 italic text-gray-600 text-sm">
                             Trabalha peito, ombros e tríceps. Mantenha o corpo alinhado da cabeça aos pés. Pode ser adaptada com os joelhos no chão.
                         </td>
                     </tr>
                     <tr class="toggle-row" onclick="toggleDetails(this, event)">
                         <td class="exercise-name">Desenv. de Ombro c/ Halteres</td>
                         <td>3-4x(8-12) - 60s</td>
-                        <td><input type="text" data-exercise-id="carga-desenv-ombro" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border rounded-md focus:outline-none focus:ring focus:border-blue-300"></td>
+                        <td><input type="text" data-exercise-id="carga-desenv-ombro" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border focus:outline-none focus:ring focus:border-blue-300"></td>
                     </tr>
                     <tr class="details-row hidden">
-                        <td colspan="3" class="p-4 italic text-gray-600">
+                        <td colspan="3" class="p-4 italic text-gray-600 text-sm">
                             Fortalece os ombros. Sente-se ou fique em pé com halteres e empurre-os para cima, acima da cabeça. Mantenha as escápulas estáveis.
                         </td>
                     </tr>
                     <tr class="toggle-row" onclick="toggleDetails(this, event)">
                         <td class="exercise-name">Supino Inclinado c/ Halteres</td>
                         <td>3-4x(8-12) - 60s</td>
-                        <td><input type="text" data-exercise-id="carga-supino-inclinado" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border rounded-md focus:outline-none focus:ring focus:border-blue-300"></td>
+                        <td><input type="text" data-exercise-id="carga-supino-inclinado" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border focus:outline-none focus:ring focus:border-blue-300"></td>
                     </tr>
                     <tr class="details-row hidden">
-                        <td colspan="3" class="p-4 italic text-gray-600">
+                        <td colspan="3" class="p-4 italic text-gray-600 text-sm">
                             Foca na parte superior do peito e ombros. Deite-se em um banco inclinado e empurre os halteres para cima. Controle o movimento na descida.
                         </td>
                     </tr>
                     <tr class="toggle-row" onclick="toggleDetails(this, event)">
                         <td class="exercise-name">Tríceps Testa</td>
                         <td>3-4x(10-15) - 60s</td>
-                        <td><input type="text" data-exercise-id="carga-triceps-testa" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border rounded-md focus:outline-none focus:ring focus:border-blue-300"></td>
+                        <td><input type="text" data-exercise-id="carga-triceps-testa" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border focus:outline-none focus:ring focus:border-blue-300"></td>
                     </tr>
                     <tr class="details-row hidden">
-                        <td colspan="3" class="p-4 italic text-gray-600">
+                        <td colspan="3" class="p-4 italic text-gray-600 text-sm">
                             Isola o músculo tríceps. Deite-se em um banco, estenda os braços para cima e flexione os cotovelos, levando a barra ou halteres em direção à testa.
                         </td>
                     </tr>
                     <tr class="toggle-row" onclick="toggleDetails(this, event)">
                         <td class="exercise-name">Elevação Lateral c/ Halteres</td>
                         <td>3x(12-15) - 60s</td>
-                        <td><input type="text" data-exercise-id="carga-elevacao-lateral" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border rounded-md focus:outline-none focus:ring focus:border-blue-300"></td>
+                        <td><input type="text" data-exercise-id="carga-elevacao-lateral" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border focus:outline-none focus:ring focus:border-blue-300"></td>
                     </tr>
                     <tr class="details-row hidden">
-                        <td colspan="3" class="p-4 italic text-gray-600">
+                        <td colspan="3" class="p-4 italic text-gray-600 text-sm">
                             <p>Fortalece a porção lateral do ombro. Em pé, com os halteres ao lado do corpo, levante-os lateralmente até a altura dos ombros, mantendo os cotovelos levemente flexionados.</p>
                         </td>
                     </tr>
                     <tr class="toggle-row" onclick="toggleDetails(this, event)">
                         <td class="exercise-name">Face Pull</td>
                         <td>3x(12-15) - 60s</td>
-                        <td><input type="text" data-exercise-id="carga-face-pull" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border rounded-md focus:outline-none focus:ring focus:border-blue-300"></td>
+                        <td><input type="text" data-exercise-id="carga-face-pull" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border focus:outline-none focus:ring focus:border-blue-300"></td>
                     </tr>
                     <tr class="details-row hidden">
-                        <td colspan="3" class="p-4 italic text-gray-600">
+                        <td colspan="3" class="p-4 italic text-gray-600 text-sm">
                             <p>Fortalece a porção posterior do ombro e as escápulas, fundamental para a saúde do ombro. Segure uma corda em uma polia alta e puxe-a em direção ao seu rosto, girando as mãos para fora.</p>
                         </td>
                     </tr>
@@ -364,15 +371,13 @@
             </table>
         </div>
 
-        <hr class="my-6 border-t-2 border-gray-300">
-
-        <div class="table-section forca-pernas-section">
+        <div class="forca-pernas-section">
             <h2 id="forca-pernas">TREINO DE FORÇA: PERNAS</h2>
-            <table>
+            <table class="collapsible-content">
                 <thead>
                     <tr>
                         <th>Exercício</th>
-                        <th>Séries, Repetições e Descanso</th>
+                        <th>Sér x Rep - Desc</th>
                         <th>Carga</th>
                     </tr>
                 </thead>
@@ -380,60 +385,60 @@
                     <tr class="toggle-row" onclick="toggleDetails(this, event)">
                         <td class="exercise-name">Agach. Livre c/ Barra</td>
                         <td>3-4x(8-10) - 90s</td>
-                        <td><input type="text" data-exercise-id="carga-agachamento-livre" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border rounded-md focus:outline-none focus:ring focus:border-blue-300"></td>
+                        <td><input type="text" data-exercise-id="carga-agachamento-livre" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border focus:outline-none focus:ring focus:border-blue-300"></td>
                     </tr>
                     <tr class="details-row hidden">
-                        <td colspan="3" class="p-4 italic text-gray-600">
+                        <td colspan="3" class="p-4 italic text-gray-600 text-sm">
                             Fundamental para o fortalecimento das pernas e joelhos. Mantenha os pés afastados na largura dos ombros, desça o quadril como se fosse sentar e suba.
                         </td>
                     </tr>
                     <tr class="toggle-row" onclick="toggleDetails(this, event)">
                         <td class="exercise-name">Avanço com Halteres</td>
                         <td>3-4x(10-12) - 60s</td>
-                        <td><input type="text" data-exercise-id="carga-avanco-halteres" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border rounded-md focus:outline-none focus:ring focus:border-blue-300"></td>
+                        <td><input type="text" data-exercise-id="carga-avanco-halteres" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border focus:outline-none focus:ring focus:border-blue-300"></td>
                     </tr>
                     <tr class="details-row hidden">
-                        <td colspan="3" class="p-4 italic text-gray-600">
+                        <td colspan="3" class="p-4 italic text-gray-600 text-sm">
                             Fortalece quadríceps, glúteos e, especialmente, a estabilidade dos joelhos. Dê um passo grande para a frente, descendo o tronco até que o joelho da frente forme um ângulo de 90 graus.
                         </td>
                     </tr>
                     <tr class="toggle-row" onclick="toggleDetails(this, event)">
                         <td class="exercise-name">Cadeira Extensora</td>
                         <td>3-4x(12-15) - 60s</td>
-                        <td><input type="text" data-exercise-id="carga-cadeira-extensora" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border rounded-md focus:outline-none focus:ring focus:border-blue-300"></td>
+                        <td><input type="text" data-exercise-id="carga-cadeira-extensora" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border focus:outline-none focus:ring focus:border-blue-300"></td>
                     </tr>
                     <tr class="details-row hidden">
-                        <td colspan="3" class="p-4 italic text-gray-600">
+                        <td colspan="3" class="p-4 italic text-gray-600 text-sm">
                             Isola o quadríceps. Sente-se na máquina e estenda as pernas para cima. É um ótimo exercício de baixo impacto para fortalecer a musculatura frontal da coxa.
                         </td>
                     </tr>
                     <tr class="toggle-row" onclick="toggleDetails(this, event)">
                         <td class="exercise-name">Mesa Flexora</td>
                         <td>3-4x(10-12) - 60s</td>
-                        <td><input type="text" data-exercise-id="carga-mesa-flexora" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border rounded-md focus:outline-none focus:ring focus:border-blue-300"></td>
+                        <td><input type="text" data-exercise-id="carga-mesa-flexora" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border focus:outline-none focus:ring focus:border-blue-300"></td>
                     </tr>
                     <tr class="details-row hidden">
-                        <td colspan="3" class="p-4 italic text-gray-600">
+                        <td colspan="3" class="p-4 italic text-gray-600 text-sm">
                             Fortalece os isquiotibiais (parte de trás da coxa). Deite-se na máquina de barriga para baixo e flexione as pernas, levando os calcanhares em direção aos glúteos.
                         </td>
                     </tr>
                     <tr class="toggle-row" onclick="toggleDetails(this, event)">
                         <td class="exercise-name">Stiff com Halteres</td>
                         <td>3x(10-12) - 60s</td>
-                        <td><input type="text" data-exercise-id="carga-stiff" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border rounded-md focus:outline-none focus:ring focus:border-blue-300"></td>
+                        <td><input type="text" data-exercise-id="carga-stiff" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border focus:outline-none focus:ring focus:border-blue-300"></td>
                     </tr>
                     <tr class="details-row hidden">
-                        <td colspan="3" class="p-4 italic text-gray-600">
+                        <td colspan="3" class="p-4 italic text-gray-600 text-sm">
                             <p>Foco nos isquiotibiais (parte de trás da coxa) e glúteos. Mantenha as pernas semi-flexionadas e desça o tronco com as costas retas, sentindo o alongamento na parte posterior da coxa.</p>
                         </td>
                     </tr>
                     <tr class="toggle-row" onclick="toggleDetails(this, event)">
                         <td class="exercise-name">Panturrilha em Pé</td>
                         <td>3-4x(15-20) - 45s</td>
-                        <td><input type="text" data-exercise-id="carga-panturrilha-pe" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border rounded-md focus:outline-none focus:ring focus:border-blue-300"></td>
+                        <td><input type="text" data-exercise-id="carga-panturrilha-pe" oninput="saveCarga(this.dataset.exerciseId, this.value)" onclick="event.stopPropagation()" placeholder="Carga..." class="w-full text-sm p-1 border focus:outline-none focus:ring focus:border-blue-300"></td>
                     </tr>
                     <tr class="details-row hidden">
-                        <td colspan="3" class="p-4 italic text-gray-600">
+                        <td colspan="3" class="p-4 italic text-gray-600 text-sm">
                             Fortalece a panturrilha, importante para a estabilidade e impulso. Fique em pé e levante os calcanhares, apoiando-se na ponta dos pés.
                         </td>
                     </tr>
@@ -441,66 +446,64 @@
             </table>
         </div>
 
-        <hr class="my-6 border-t-2 border-gray-300">
-
-        <div class="table-section mobilidade-section">
+        <div class="mobilidade-section">
             <h2 id="mobilidade">ROTINA DE MOBILIDADE E RECUPERAÇÃO</h2>
-            <table>
+            <table class="collapsible-content">
                 <thead>
                     <tr>
                         <th>Área</th>
                         <th>Exercício</th>
-                        <th>Tempo ou Repetições</th>
+                        <th>Rep x Tempo</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="toggle-row" onclick="toggleDetails(this, event)">
                         <td>Coluna</td>
                         <td class="exercise-name">Mobilidade Felino-Vaca</td>
-                        <td>2-3 séries de 10 repetições</td>
+                        <td>10 x 2-3</td>
                     </tr>
                     <tr class="details-row hidden">
-                        <td colspan="3" class="p-4 italic text-gray-600">
+                        <td colspan="3" class="p-4 italic text-gray-600 text-sm">
                             <p>Comece de quatro, com as mãos sob os ombros e os joelhos sob o quadril. Inspire, arqueando as costas e olhando para cima (posição da vaca). Expire, arredondando a coluna e levando o queixo ao peito (posição do gato). Repita o ciclo 10 vezes. </p>
                         </td>
                     </tr>
                     <tr class="toggle-row" onclick="toggleDetails(this, event)">
                         <td>Ombros</td>
                         <td class="exercise-name">Alongamento "Rosca Francesa"</td>
-                        <td>2-3 séries de 30 segundos por lado</td>
+                        <td>30s x 2-3 por lado</td>
                     </tr>
                     <tr class="details-row hidden">
-                        <td colspan="3" class="p-4 italic text-gray-600">
-                            <p>Em pé, leve o braço direito para trás das costas. Use a mão esquerda para puxar o cotovelo direito para trás e para baixo. Mantenha por 30 segundos em cada lado. Melhora a mobilidade dos ombros e peitoral.</p>
+                        <td colspan="3" class="p-4 italic text-gray-600 text-sm">
+                            <p>Em pé, leve o braço direito para trás das costas. Use a mão esquerda para puxar o cotovelelo direito para trás e para baixo. Mantenha por 30 segundos em cada lado. Melhora a mobilidade dos ombros e peitoral.</p>
                         </td>
                     </tr>
                     <tr class="toggle-row" onclick="toggleDetails(this, event)">
                         <td>Punhos</td>
                         <td class="exercise-name">Rotação de Punhos e Antebraços</td>
-                        <td>2-3 séries de 30 segundos</td>
+                        <td>30s x 2-3</td>
                     </tr>
                     <tr class="details-row hidden">
-                        <td colspan="3" class="p-4 italic text-gray-600">
+                        <td colspan="3" class="p-4 italic text-gray-600 text-sm">
                             <p>Comece de quatro, com as mãos no chão. Gire as mãos para que os dedos apontem para os joelhos. Incline-se lentamente para trás para alongar os antebraços e punhos. Mantenha por 30 segundos.</p>
                         </td>
                     </tr>
                     <tr class="toggle-row" onclick="toggleDetails(this, event)">
                         <td>Quadril</td>
                         <td class="exercise-name">Alongamento do Quadril em Posição de "Pombo"</td>
-                        <td>2-3 séries de 60 segundos por lado</td>
+                        <td>60s x 2-3 por lado</td>
                     </tr>
                     <tr class="details-row hidden">
-                        <td colspan="3" class="p-4 italic text-gray-600">
+                        <td colspan="3" class="p-4 italic text-gray-600 text-sm">
                             <p>Comece de quatro. Leve o joelho direito para a frente, atrás do pulso direito, e coloque a perna esquerda para trás. Sente-se suavemente sobre o quadril direito. Mantenha por 60 segundos em cada lado. Melhora a flexibilidade do quadril, essencial para escalada.</p>
                         </td>
                     </tr>
                     <tr class="toggle-row" onclick="toggleDetails(this, event)">
                         <td>Toraxica</td>
                         <td class="exercise-name">Alongamento de Coluna Torácica</td>
-                        <td>2-3 séries de 30 segundos por lado</td>
+                        <td>30s x 2-3 por lado</td>
                     </tr>
                     <tr class="details-row hidden">
-                        <td colspan="3" class="p-4 italic text-gray-600">
+                        <td colspan="3" class="p-4 italic text-gray-600 text-sm">
                             <p>Deite-se de lado com os joelhos juntos e flexionados. Gire a parte superior do tronco para o lado oposto, estendendo o braço. Mantenha por 30 segundos e troque de lado. Ajuda na rotação e estabilidade do tronco.</p>
                         </td>
                     </tr>
@@ -508,50 +511,46 @@
             </table>
         </div>
 
-        <hr class="my-6 border-t-2 border-gray-300">
-
         <h2 id="ferramentas">FERRAMENTAS INTELIGENTES</h2>
         
-        <h3 class="font-bold text-lg mb-2">Gerador de Plano Alimentar</h3>
-        <p class="mb-4 text-gray-600">Gere planos alimentares.</p>
-        <div class="flex flex-col md:flex-row gap-4">
-            <div class="flex-grow">
-                <label for="meal-prompt" class="block text-sm font-medium text-gray-600">Detalhes do Plano Alimentar</label>
-                <textarea id="meal-prompt" rows="3" class="mt-1 block w-full prompt-textarea border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" placeholder="Ex: Dia de treino; Proteína e carboidratos."></textarea>
-                <div class="btn-wrapper">
-                    <button class="mt-2 inline-flex items-center px-4 py-2 border-2 border-pink-500 text-sm font-medium text-white bg-pink-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 button-primary" onclick="generateMealPlan()">Gerar Plano Alimentar ✨</button>
-                    <div id="loading-meal"></div>
+        <div class="collapsible-content">
+            <h3 class="font-bold text-lg mb-2 mt-4">Gerador de Plano Alimentar</h3>
+            <p class="mb-4 text-gray-600 text-sm">Gere planos alimentares.</p>
+            <div class="flex flex-col md:flex-row gap-4">
+                <div class="flex-grow">
+                    <label for="meal-prompt" class="block text-sm font-medium text-gray-600">Detalhes do Plano Alimentar</label>
+                    <textarea id="meal-prompt" rows="3" class="mt-1 block w-full prompt-textarea focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" placeholder="Ex: Dia de treino; Proteína e carboidratos."></textarea>
+                    <div class="btn-wrapper">
+                        <button class="button-primary" onclick="generateMealPlan()">Gerar Plano Alimentar ✨</button>
+                        <div id="loading-meal"></div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div id="meal-plan-output" class="mt-4 p-4 bg-gray-100 text-gray-800 hidden"></div>
+            <div id="meal-plan-output" class="mt-4 p-4 bg-gray-100 text-gray-800 hidden"></div>
 
-        <hr class="my-6 border-t-2 border-gray-300">
-
-        <h3 class="font-bold text-lg mb-2">Gerador de 'Beta' para Vias de Escalada</h3>
-        <p class="mb-4 text-gray-600">Gere um 'beta' para vias.</p>
-        <div>
-            <label for="beta-prompt" class="block text-sm font-medium text-gray-600">Descrição da via:</label>
-            <textarea id="beta-prompt" rows="3" class="mt-1 block w-full prompt-textarea border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" placeholder="Ex: Via com overhang e pinça na saída."></textarea>
-            <div class="btn-wrapper">
-                <button class="mt-2 inline-flex items-center px-4 py-2 border-2 border-purple-500 text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 button-primary" onclick="generateBeta()">Gerar 'Beta' ✨</button>
-                <div id="loading-beta"></div>
+            <h3 class="font-bold text-lg mb-2 mt-4">Gerador de 'Beta' para Vias de Escalada</h3>
+            <p class="mb-4 text-gray-600 text-sm">Gere um 'beta' para vias.</p>
+            <div>
+                <label for="beta-prompt" class="block text-sm font-medium text-gray-600">Descrição da via:</label>
+                <textarea id="beta-prompt" rows="3" class="mt-1 block w-full prompt-textarea focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" placeholder="Ex: Via com overhang e pinça na saída."></textarea>
+                <div class="btn-wrapper">
+                    <button class="button-primary" onclick="generateBeta()">Gerar 'Beta' ✨</button>
+                    <div id="loading-beta"></div>
+                </div>
+                <div id="beta-output" class="mt-4 p-4 bg-gray-100 text-gray-800 hidden"></div>
             </div>
-            <div id="beta-output" class="mt-4 p-4 bg-gray-100 text-gray-800 hidden"></div>
-        </div>
 
-        <hr class="my-6 border-t-2 border-gray-300">
-
-        <h3 class="font-bold text-lg mb-2">Sugestões de Mobilidade e Prevenção de Lesões</h3>
-        <p class="mb-4 text-gray-600">Receba dicas de mobilidade para prevenir lesões.</p>
-        <div>
-            <label for="mobility-prompt" class="block text-sm font-medium text-gray-600">Área ou dor:</label>
-            <textarea id="mobility-prompt" rows="3" class="mt-1 block w-full prompt-textarea border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" placeholder="Ex: Dor no ombro."></textarea>
-            <div class="btn-wrapper">
-                <button class="mt-2 inline-flex items-center px-4 py-2 border-2 border-teal-500 text-sm font-medium text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 button-primary" onclick="getMobilitySuggestions()">Obter Sugestões ✨</button>
-                <div id="loading-mobility"></div>
+            <h3 class="font-bold text-lg mb-2 mt-4">Sugestões de Mobilidade e Prevenção de Lesões</h3>
+            <p class="mb-4 text-gray-600 text-sm">Receba dicas de mobilidade para prevenir lesões.</p>
+            <div>
+                <label for="mobility-prompt" class="block text-sm font-medium text-gray-600">Área ou dor:</label>
+                <textarea id="mobility-prompt" rows="3" class="mt-1 block w-full prompt-textarea focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" placeholder="Ex: Dor no ombro."></textarea>
+                <div class="btn-wrapper">
+                    <button class="button-primary" onclick="getMobilitySuggestions()">Obter Sugestões ✨</button>
+                    <div id="loading-mobility"></div>
+                </div>
+                <div id="mobility-output" class="mt-4 p-4 bg-gray-100 text-gray-800 hidden"></div>
             </div>
-            <div id="mobility-output" class="mt-4 p-4 bg-gray-100 text-gray-800 hidden"></div>
         </div>
     </div>
 </div>
@@ -580,13 +579,8 @@
             return;
         }
         const detailsRow = row.nextElementSibling;
-        if (detailsRow.classList.contains('hidden')) {
-            detailsRow.classList.remove('hidden');
-            row.classList.add('expanded');
-        } else {
-            detailsRow.classList.add('hidden');
-            row.classList.remove('expanded');
-        }
+        detailsRow.classList.toggle('hidden');
+        row.classList.toggle('expanded');
     }
 
     async function callApiWithBackoff(payload, modelName, outputElement, loadingElement, isJson = false) {
@@ -622,9 +616,7 @@
 
                 const result = await response.json();
                 
-                if (result.candidates && result.candidates.length > 0 &&
-                    result.candidates[0].content && result.candidates[0].content.parts &&
-                    result.candidates[0].content.parts.length > 0) {
+                if (result.candidates && result.candidates[0].content && result.candidates[0].content.parts && result.candidates[0].content.parts.length > 0) {
                     const text = result.candidates[0].content.parts[0].text;
                     if (isJson) {
                         return JSON.parse(text);
@@ -738,26 +730,37 @@
         try {
             const suggestionsText = await callApiWithBackoff(payload, "gemini-2.5-flash-preview-05-20", outputElement, loadingElement);
             outputElement.innerHTML = `<div class="prose max-w-none"><p class="whitespace-pre-wrap">${suggestionsText}</p></div>`;
-        } catch (error) {
+        } catch (error)
+ {
             outputElement.innerHTML = `<p class="text-red-500">Erro ao obter sugestões. Tente novamente mais tarde.</p>`;
         } finally {
             loadingElement.innerHTML = '';
         }
     }
+</script>
+<script>
+    // NOVO SCRIPT PARA SEÇÕES EXPANSÍVEIS
+    document.addEventListener('DOMContentLoaded', () => {
+        const collapsibleTitles = document.querySelectorAll(
+            '#forca-costas-biceps, #forca-peito-ombros, #forca-pernas, #mobilidade, #ferramentas'
+        );
 
-    function toggleDetails(row, event) {
-        if (event && event.target.tagName === 'INPUT') {
-            return;
-        }
-        const detailsRow = row.nextElementSibling;
-        if (detailsRow.classList.contains('hidden')) {
-            detailsRow.classList.remove('hidden');
-            row.classList.add('expanded');
-        } else {
-            detailsRow.classList.add('hidden');
-            row.classList.remove('expanded');
-        }
-    }
+        collapsibleTitles.forEach(title => {
+            title.classList.add('collapsible-title');
+            const content = title.nextElementSibling;
+
+            if (content) {
+                // Esconde o conteúdo por padrão
+                content.classList.add('hidden');
+
+                // Adiciona o evento de clique ao título
+                title.addEventListener('click', () => {
+                    title.classList.toggle('expanded');
+                    content.classList.toggle('hidden');
+                });
+            }
+        });
+    });
 </script>
 
 </body>
