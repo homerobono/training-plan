@@ -4,9 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="icon" type="image/x-icon" href="/traning-plan/favicon.ico">
-    <title>Plano de Treino V29</title>
+    <link rel="icon" type="image/x-icon" href="/training-plan/favicon.ico">
+    <title>Plano de Treino V30</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,255 +13,267 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            line-height: 1.5;
-            background-color: #ffffff;
+            background-color: #f9fafb;
             color: #1a1a1a;
-            padding: 0;
             -webkit-user-select: none;
             user-select: none;
         }
 
         .container {
-            width: 100%;
-            min-height: 100vh;
-            background: #ffffff;
             padding: 16px;
-            box-sizing: border-box;
         }
 
-        h1,
-        h2 {
+        h1, h2 {
             font-weight: 700;
         }
 
         h1 {
             text-align: center;
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
             color: #e74c3c;
         }
 
         h2 {
-            font-size: 1.5rem;
-            margin-top: 1.5rem;
-            padding-bottom: 8px;
-            text-transform: uppercase;
+            font-size: 1.25rem;
+            margin-top: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f1f1f1;
         }
 
-        h2#resumo-semanal {
-            color: #34495e;
+        h2#resumo-semanal { color: #34495e; }
+        h2#forca-costas-biceps { color: #c0392b; }
+        h2#forca-peito-ombros { color: #e67e22; }
+        h2#forca-pernas { color: #2980b9; }
+        h2#mobilidade { color: #8e44ad; }
+
+        /* --- Novo Layout de Agenda --- */
+        .agenda-list {
+            margin-bottom: 2.5rem;
+            margin-top: 1rem;
         }
 
-        h2#forca-costas-biceps {
-            color: #c0392b;
-        }
-
-        h2#forca-peito-ombros {
-            color: #e67e22;
-        }
-
-        h2#forca-pernas {
-            color: #2980b9;
-        }
-
-        h2#mobilidade {
-            color: #8e44ad;
-        }
-
-        .calendar-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-            gap: 1px;
-            background-color: #e9ecef;
+        .day-item {
             border: 1px solid #e9ecef;
             border-radius: 8px;
+            margin-bottom: 8px;
             overflow: hidden;
-            margin-bottom: 2.5rem;
+            transition: box-shadow 0.2s;
+        }
+        
+        .day-item.active {
+             box-shadow: 0 0 0 2px #3b82f6; /* Destaque azul ao editar */
         }
 
-        .calendar-day {
-            background-color: #fff;
-            min-height: 90px;
+        .day-display {
             display: flex;
-            flex-direction: column;
-            cursor: grab;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        
-        .calendar-day.placeholder {
-            background-color: #e6f7ff;
-            opacity: 0.5;
-        }
-        
-        .calendar-day.dragging-clone {
-            position: fixed;
-            pointer-events: none;
-            z-index: 1000;
-            opacity: 0.8;
-            transform: scale(1.05);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            cursor: grabbing;
+            align-items: center;
+            padding: 12px;
+            cursor: pointer;
+            background-color: #fff;
         }
 
-        .calendar-day.dragging-source {
-            opacity: 0.4;
-        }
-
-        .day-header {
-            padding: 6px 4px;
-            font-size: 0.7rem;
+        .day-name {
             font-weight: 700;
-            color: white;
-            text-transform: uppercase;
-            text-align: center;
+            font-size: 0.8rem;
+            color: #6c757d;
+            width: 45px;
         }
 
-        .event {
-            padding: 8px;
-            font-size: 0.75rem;
+        .activity-color-bar {
+            width: 4px;
+            height: 24px;
+            border-radius: 2px;
+            margin-right: 12px;
+        }
+        
+        .activity-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+        }
+        .activity-icon img, .activity-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .activity-name {
             font-weight: 600;
-            line-height: 1.2;
-            text-align: center;
+            font-size: 0.9rem;
+            flex-grow: 1;
+        }
+        
+        .edit-icon {
+            width: 20px;
+            height: 20px;
+            stroke: #9ca3af;
+        }
+        
+        .activity-options {
+            background-color: #f8f9fa;
+            padding: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .option-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid;
+            cursor: pointer;
+            transition: all 0.2s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-grow: 1;
-            text-decoration: none;
-            pointer-events: none; /* Garante que os eventos sejam capturados pelo pai */
+        }
+        
+        .option-btn.selected {
+             transform: scale(1.1);
+             box-shadow: 0 0 0 2px;
         }
 
-        .header-costas-biceps { background-color: #c0392b; }
-        .header-peito-ombros { background-color: #e67e22; }
-        .header-pernas { background-color: #2980b9; }
-        .header-descanso { background-color: #8e44ad; }
-        .header-cardio { background-color: #6c757d; }
+        .option-btn:not(.selected) {
+            opacity: 0.6;
+        }
         
-        .event .text-costas-biceps { color: #c0392b; }
-        .event .text-peito-ombros { color: #e67e22; }
-        .event .text-pernas { color: #2980b9; }
-        .event .text-descanso { color: #8e44ad; }
+        .option-costas { border-color: #c0392b; color: #c0392b; }
+        .option-costas.selected { background-color: #c0392b; color: white; }
+
+        .option-peito { border-color: #e67e22; color: #e67e22; }
+        .option-peito.selected { background-color: #e67e22; color: white; }
         
+        .option-pernas { border-color: #2980b9; color: #2980b9; }
+        .option-pernas.selected { background-color: #2980b9; color: white; }
+
+        .option-mobilidade { border-color: #8e44ad; color: #8e44ad; }
+        .option-mobilidade.selected { background-color: #8e44ad; color: white; }
+        
+        .option-cardio { border-color: #6c757d; color: #6c757d; }
+        .option-cardio.selected { background-color: #6c757d; color: white; }
+        
+        .option-btn svg, .option-btn img { width: 20px; height: 20px; }
+
+
+        /* --- Outros Estilos --- */
         .content-section { margin-bottom: 1.5rem; }
         table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
-        th, td { padding: 8px; text-align: left; font-size: 0.8rem; word-wrap: break-word; border-bottom: 1px solid #f1f1f1; }
-        thead th { font-size: 0.75rem; text-transform: uppercase; color: white; }
+        th, td { padding: 10px 8px; text-align: left; font-size: 0.85rem; border-bottom: 1px solid #f1f1f1; }
+        thead th { font-size: 0.7rem; text-transform: uppercase; color: white; padding: 8px; }
         tbody tr:last-child td { border-bottom: none; }
-
         .forca-costas-biceps-section thead th { background-color: #c0392b; }
         .forca-peito-ombros-section thead th { background-color: #e67e22; }
         .forca-pernas-section thead th { background-color: #2980b9; }
         .mobilidade-section thead th { background-color: #8e44ad; }
-
         .exercise-name { font-weight: 600; font-size: 0.9rem; }
         .toggle-row { cursor: pointer; }
         .toggle-row:hover { background-color: #f5f5f5; }
-        .details-row td { background-color: #f9f9f9; padding: 12px; font-style: italic; font-size: 0.75rem; color: #555; }
-        
-        .collapsible-title { cursor: pointer; position: relative; padding-right: 35px; }
+        .details-row td { background-color: #f9f9f9; padding: 12px; font-style: italic; font-size: 0.8rem; color: #555; }
+        .collapsible-title { cursor: pointer; position: relative; padding-right: 30px; }
         .collapsible-title::after { content: '›'; font-size: 1.8rem; position: absolute; right: 8px; top: 50%; transform: translateY(-50%) rotate(0deg); transition: transform 0.2s; font-weight: 400; }
         .collapsible-title.expanded::after { transform: translateY(-50%) rotate(90deg); }
-        
-        .superset-group td:first-child { border-left: 3px solid #dee2e6; padding-left: 20px; background-color: #fafafa; }
+        .superset-group td:first-child { border-left: 3px solid #dee2e6; padding-left: 15px; background-color: #fafafa; }
         .superset-group td { background-color: #fafafa; }
         .superset-group:last-of-type td { border-bottom: 1px solid #f1f1f1; }
-
         .hidden { display: none; }
     </style>
 </head>
 
 <body>
-
-    <div class="container p-4 mx-auto max-w-2xl">
+    <div class="container mx-auto max-w-2xl">
         <h1>PLANO DE TREINO</h1>
-        <p class="mb-6 text-center text-sm text-gray-700">Otimizado para força e recuperação. Para reorganizar, toque e segure um card e arraste-o para outro dia.</p>
+        <p class="mb-6 text-center text-sm text-gray-700">Otimizado para força e recuperação. Toque em um dia para alterar a atividade.</p>
 
-        <h2 id="resumo-semanal">RESUMO SEMANAL</h2>
-        <div class="calendar-grid">
-            <!-- Os dias da semana serão gerados e inseridos aqui pelo JavaScript -->
+        <h2 id="resumo-semanal" class="font-bold">RESUMO SEMANAL</h2>
+        <div id="agenda-container" class="agenda-list">
+            <!-- Agenda será gerada pelo JS -->
         </div>
         
         <!-- SEÇÕES DE TREINO -->
-        <div class="forca-costas-biceps-section content-section">
-            <h2 id="forca-costas-biceps" class="collapsible-title">COSTAS E BÍCEPS</h2>
-            <table class="collapsible-content hidden">
-                <thead><tr><th>Exercício</th><th>S x R - D</th><th>Carga</th></tr></thead>
-                <tbody>
-                    <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Puxada na Barra Fixa</td><td>3-4x(6-8) - 90s</td><td><input type="text" data-exercise-id="carga-puxada-barra-fixa" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Excelente para fortalecer as costas e os braços. Use a máquina de assistência, um elástico ou, se já for forte o suficiente, faça com o peso do corpo.</td></tr>
-                    <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Remada Curvada com Halteres</td><td>3-4x(10-12) - 60s</td><td><input type="text" data-exercise-id="carga-remada-curvada-halteres" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Fortalece a parte média das costas e ombros. Mantenha as costas retas e puxe os halteres em direção ao seu quadril.</td></tr>
-                    <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Puxada Alta</td><td>3-4x(10-12) - 60s</td><td><input type="text" data-exercise-id="carga-puxada-alta" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Trabalha o latíssimo do dorso, músculo essencial para a puxada na escalada.</td></tr>
-                    <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Remada Sentada na Máquina</td><td>3-4x(10-12) - 60s</td><td><input type="text" data-exercise-id="carga-remada-sentada-maquina" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Fortalece a região média e alta das costas.</td></tr>
-                    <tr class="superset-group toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Rosca Direta com Barra</td><td>3-4x(10-12)</td><td><input type="text" data-exercise-id="carga-rosca-direta" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Foco no bíceps e antebraços.</td></tr>
-                    <tr class="superset-group toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Prancha (Core)</td><td>3-4x(45-60s) - 60s</td><td><input type="text" data-exercise-id="carga-prancha" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Fortalece o core (abdômen e lombar).</td></tr>
-                </tbody>
-            </table>
-        </div>
+        <div class="content-sections-wrapper">
+             <div class="forca-costas-biceps-section content-section">
+                <h2 id="forca-costas-biceps" class="collapsible-title">COSTAS E BÍCEPS</h2>
+                <table class="collapsible-content hidden">
+                    <thead><tr><th>Exercício</th><th>S x R - D</th><th>Carga</th></tr></thead>
+                    <tbody>
+                        <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Puxada na Barra Fixa</td><td>3-4x(6-8) - 90s</td><td><input type="text" data-exercise-id="carga-puxada-barra-fixa" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
+                        <tr class="details-row hidden"><td colspan="3">Excelente para fortalecer as costas e os braços. Use a máquina de assistência, um elástico ou, se já for forte o suficiente, faça com o peso do corpo.</td></tr>
+                        <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Remada Curvada com Halteres</td><td>3-4x(10-12) - 60s</td><td><input type="text" data-exercise-id="carga-remada-curvada-halteres" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
+                        <tr class="details-row hidden"><td colspan="3">Fortalece a parte média das costas e ombros. Mantenha as costas retas e puxe os halteres em direção ao seu quadril.</td></tr>
+                        <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Puxada Alta</td><td>3-4x(10-12) - 60s</td><td><input type="text" data-exercise-id="carga-puxada-alta" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
+                        <tr class="details-row hidden"><td colspan="3">Trabalha o latíssimo do dorso, músculo essencial para a puxada na escalada.</td></tr>
+                        <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Remada Sentada na Máquina</td><td>3-4x(10-12) - 60s</td><td><input type="text" data-exercise-id="carga-remada-sentada-maquina" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
+                        <tr class="details-row hidden"><td colspan="3">Fortalece a região média e alta das costas.</td></tr>
+                        <tr class="superset-group toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Rosca Direta com Barra</td><td>3-4x(10-12)</td><td><input type="text" data-exercise-id="carga-rosca-direta" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
+                        <tr class="details-row hidden"><td colspan="3">Foco no bíceps e antebraços.</td></tr>
+                        <tr class="superset-group toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Prancha (Core)</td><td>3-4x(45-60s) - 60s</td><td><input type="text" data-exercise-id="carga-prancha" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
+                        <tr class="details-row hidden"><td colspan="3">Fortalece o core (abdômen e lombar).</td></tr>
+                    </tbody>
+                </table>
+            </div>
 
-        <div class="forca-peito-ombros-section content-section">
-            <h2 id="forca-peito-ombros" class="collapsible-title">PEITO E OMBROS</h2>
-            <table class="collapsible-content hidden">
-                 <thead><tr><th>Exercício</th><th>S x R - D</th><th>Carga</th></tr></thead>
-                <tbody>
-                    <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Supino Inclinado c/ Halteres (Pirâmide)</td><td>4x(12, 10, 8, 8) - 90s</td><td><input type="text" data-exercise-id="carga-supino-inclinado" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Comece com peso para 12 reps e aumente a carga a cada série.</td></tr>
-                    <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Desenv. de Ombro c/ Halteres</td><td>3-4x(8-12) - 60s</td><td><input type="text" data-exercise-id="carga-desenv-ombro" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Fortalece os ombros. Sente-se ou fique em pé e empurre os halteres para cima.</td></tr>
-                    <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Flexão de Braço</td><td>3-4x(10-15) - 60s</td><td><input type="text" data-exercise-id="carga-flexao-braco" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Trabalha peito, ombros e tríceps.</td></tr>
-                    <tr class="superset-group toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Tríceps Testa</td><td>3-4x(10-15)</td><td><input type="text" data-exercise-id="carga-triceps-testa" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Isola o músculo tríceps.</td></tr>
-                    <tr class="superset-group toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Face Pull</td><td>3x(12-15) - 60s</td><td><input type="text" data-exercise-id="carga-face-pull" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Fortalece a porção posterior do ombro e as escápulas.</td></tr>
-                    <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Elevação Lateral c/ Halteres</td><td>3x(12-15) - 60s</td><td><input type="text" data-exercise-id="carga-elevacao-lateral" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Fortalece a porção lateral do ombro.</td></tr>
-                </tbody>
-            </table>
-        </div>
-        
-        <div class="forca-pernas-section content-section">
-            <h2 id="forca-pernas" class="collapsible-title">PERNAS</h2>
-            <table class="collapsible-content hidden">
-                <thead><tr><th>Exercício</th><th>S x R - D</th><th>Carga</th></tr></thead>
-                <tbody>
-                    <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Agach. Livre c/ Barra (Pirâmide)</td><td>4x(12, 10, 8, 6) - 90-120s</td><td><input type="text" data-exercise-id="carga-agachamento-livre" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Comece com peso para 12 reps e aumente a carga a cada série.</td></tr>
-                    <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Avanço com Halteres</td><td>3-4x(10-12 por perna) - 60s</td><td><input type="text" data-exercise-id="carga-avanco-halteres" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Fortalece quadríceps, glúteos e a estabilidade dos joelhos.</td></tr>
-                    <tr class="superset-group toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Cadeira Extensora</td><td>3-4x(12-15)</td><td><input type="text" data-exercise-id="carga-cadeira-extensora" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Isola o quadríceps. Ótimo exercício de baixo impacto.</td></tr>
-                    <tr class="superset-group toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Mesa Flexora</td><td>3-4x(10-12) - 60s</td><td><input type="text" data-exercise-id="carga-mesa-flexora" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Fortalece os isquiotibiais (parte de trás da coxa).</td></tr>
-                    <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Stiff com Halteres</td><td>3x(10-12) - 60s</td><td><input type="text" data-exercise-id="carga-stiff" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Foco nos isquiotibiais e glúteos.</td></tr>
-                    <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Panturrilha em Pé</td><td>3-4x(15-20) - 45s</td><td><input type="text" data-exercise-id="carga-panturrilha-pe" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Fortalece a panturrilha, importante para a estabilidade e impulso.</td></tr>
-                </tbody>
-            </table>
-        </div>
-        
-        <div class="mobilidade-section content-section">
-            <h2 id="mobilidade" class="collapsible-title">MOBILIDADE E RECUPERAÇÃO</h2>
-            <table class="collapsible-content hidden">
-                <thead><tr><th>Área</th><th>Exercício</th><th>T x R</th></tr></thead>
-                <tbody>
-                    <tr class="toggle-row" onclick="toggleDetails(this)"><td>Coluna</td><td class="exercise-name">Mobilidade Felino-Vaca</td><td>10 x 2-3</td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Alivia a tensão na coluna vertebral.</td></tr>
-                    <tr class="toggle-row" onclick="toggleDetails(this)"><td>Ombros</td><td class="exercise-name">Alongamento "Rosca Francesa"</td><td>30s x 2-3 por lado</td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Melhora a mobilidade dos ombros e peitoral.</td></tr>
-                    <tr class="toggle-row" onclick="toggleDetails(this)"><td>Punhos</td><td class="exercise-name">Rotação de Punhos e Antebraços</td><td>30s x 2-3</td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Alonga os antebraços e punhos.</td></tr>
-                    <tr class="toggle-row" onclick="toggleDetails(this)"><td>Quadril</td><td class="exercise-name">Alongamento do Quadril em Posição de "Pombo"</td><td>60s x 2-3 por lado</td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Melhora a flexibilidade do quadril, essencial para escalada.</td></tr>
-                    <tr class="toggle-row" onclick="toggleDetails(this)"><td>Torácica</td><td class="exercise-name">Alongamento de Coluna Torácica</td><td>30s x 2-3 por lado</td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Ajuda na rotação e estabilidade do tronco.</td></tr>
-                </tbody>
-            </table>
+            <div class="forca-peito-ombros-section content-section">
+                <h2 id="forca-peito-ombros" class="collapsible-title">PEITO E OMBROS</h2>
+                <table class="collapsible-content hidden">
+                    <thead><tr><th>Exercício</th><th>S x R - D</th><th>Carga</th></tr></thead>
+                    <tbody>
+                        <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Supino Inclinado c/ Halteres (Pirâmide)</td><td>4x(12, 10, 8, 8) - 90s</td><td><input type="text" data-exercise-id="carga-supino-inclinado" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
+                        <tr class="details-row hidden"><td colspan="3">Comece com peso para 12 reps e aumente a carga a cada série.</td></tr>
+                        <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Desenv. de Ombro c/ Halteres</td><td>3-4x(8-12) - 60s</td><td><input type="text" data-exercise-id="carga-desenv-ombro" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
+                        <tr class="details-row hidden"><td colspan="3">Fortalece os ombros. Sente-se ou fique em pé e empurre os halteres para cima.</td></tr>
+                        <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Flexão de Braço</td><td>3-4x(10-15) - 60s</td><td><input type="text" data-exercise-id="carga-flexao-braco" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
+                        <tr class="details-row hidden"><td colspan="3">Trabalha peito, ombros e tríceps.</td></tr>
+                        <tr class="superset-group toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Tríceps Testa</td><td>3-4x(10-15)</td><td><input type="text" data-exercise-id="carga-triceps-testa" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
+                        <tr class="details-row hidden"><td colspan="3">Isola o músculo tríceps.</td></tr>
+                        <tr class="superset-group toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Face Pull</td><td>3x(12-15) - 60s</td><td><input type="text" data-exercise-id="carga-face-pull" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
+                        <tr class="details-row hidden"><td colspan="3">Fortalece a porção posterior do ombro e as escápulas.</td></tr>
+                        <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Elevação Lateral c/ Halteres</td><td>3x(12-15) - 60s</td><td><input type="text" data-exercise-id="carga-elevacao-lateral" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
+                        <tr class="details-row hidden"><td colspan="3">Fortalece a porção lateral do ombro.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="forca-pernas-section content-section">
+                <h2 id="forca-pernas" class="collapsible-title">PERNAS</h2>
+                <table class="collapsible-content hidden">
+                    <thead><tr><th>Exercício</th><th>S x R - D</th><th>Carga</th></tr></thead>
+                    <tbody>
+                        <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Agach. Livre c/ Barra (Pirâmide)</td><td>4x(12, 10, 8, 6) - 90-120s</td><td><input type="text" data-exercise-id="carga-agachamento-livre" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
+                        <tr class="details-row hidden"><td colspan="3">Comece com peso para 12 reps e aumente a carga a cada série.</td></tr>
+                        <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Avanço com Halteres</td><td>3-4x(10-12 por perna) - 60s</td><td><input type="text" data-exercise-id="carga-avanco-halteres" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
+                        <tr class="details-row hidden"><td colspan="3">Fortalece quadríceps, glúteos e a estabilidade dos joelhos.</td></tr>
+                        <tr class="superset-group toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Cadeira Extensora</td><td>3-4x(12-15)</td><td><input type="text" data-exercise-id="carga-cadeira-extensora" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
+                        <tr class="details-row hidden"><td colspan="3">Isola o quadríceps. Ótimo exercício de baixo impacto.</td></tr>
+                        <tr class="superset-group toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Mesa Flexora</td><td>3-4x(10-12) - 60s</td><td><input type="text" data-exercise-id="carga-mesa-flexora" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
+                        <tr class="details-row hidden"><td colspan="3">Fortalece os isquiotibiais (parte de trás da coxa).</td></tr>
+                        <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Stiff com Halteres</td><td>3x(10-12) - 60s</td><td><input type="text" data-exercise-id="carga-stiff" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
+                        <tr class="details-row hidden"><td colspan="3">Foco nos isquiotibiais e glúteos.</td></tr>
+                        <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Panturrilha em Pé</td><td>3-4x(15-20) - 45s</td><td><input type="text" data-exercise-id="carga-panturrilha-pe" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
+                        <tr class="details-row hidden"><td colspan="3">Fortalece a panturrilha, importante para a estabilidade e impulso.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="mobilidade-section content-section">
+                <h2 id="mobilidade" class="collapsible-title">MOBILIDADE E RECUPERAÇÃO</h2>
+                <table class="collapsible-content hidden">
+                    <thead><tr><th>Área</th><th>Exercício</th><th>T x R</th></tr></thead>
+                    <tbody>
+                        <tr class="toggle-row" onclick="toggleDetails(this)"><td>Coluna</td><td class="exercise-name">Mobilidade Felino-Vaca</td><td>10 x 2-3</td></tr>
+                        <tr class="details-row hidden"><td colspan="3">Alivia a tensão na coluna vertebral.</td></tr>
+                        <tr class="toggle-row" onclick="toggleDetails(this)"><td>Ombros</td><td class="exercise-name">Alongamento "Rosca Francesa"</td><td>30s x 2-3 por lado</td></tr>
+                        <tr class="details-row hidden"><td colspan="3">Melhora a mobilidade dos ombros e peitoral.</td></tr>
+                        <tr class="toggle-row" onclick="toggleDetails(this)"><td>Punhos</td><td class="exercise-name">Rotação de Punhos e Antebraços</td><td>30s x 2-3</td></tr>
+                        <tr class="details-row hidden"><td colspan="3">Alonga os antebraços e punhos.</td></tr>
+                        <tr class="toggle-row" onclick="toggleDetails(this)"><td>Quadril</td><td class="exercise-name">Alongamento do Quadril em Posição de "Pombo"</td><td>60s x 2-3 por lado</td></tr>
+                        <tr class="details-row hidden"><td colspan="3">Melhora a flexibilidade do quadril, essencial para escalada.</td></tr>
+                        <tr class="toggle-row" onclick="toggleDetails(this)"><td>Torácica</td><td class="exercise-name">Alongamento de Coluna Torácica</td><td>30s x 2-3 por lado</td></tr>
+                        <tr class="details-row hidden"><td colspan="3">Ajuda na rotação e estabilidade do tronco.</td></tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
@@ -270,7 +281,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             loadCargas();
             setupCollapsibles();
-            setupDragAndDrop();
+            setupFlexibleAgenda();
         });
 
         function saveCarga(exerciseId, value) {
@@ -306,102 +317,81 @@
             });
         }
         
-        function setupDragAndDrop() {
-            let scheduleData = [
-                { day: "Seg", activity: "Costas & Bíceps", color: "costas-biceps", href: "#forca-costas-biceps" },
-                { day: "Ter", activity: "Descanso Ativo", color: "descanso", href: "#mobilidade" },
-                { day: "Qua", activity: "Pedal", color: "cardio", icon: "bike.svg" },
-                { day: "Qui", activity: "Peito & Ombros", color: "peito-ombros", href: "#forca-peito-ombros" },
-                { day: "Sex", activity: "Pernas", color: "pernas", href: "#forca-pernas" },
-                { day: "Sáb", activity: "Escalada", color: "cardio", icon: "climb.svg" },
-                { day: "Dom", activity: "Pedal", color: "cardio", icon: "bike.svg" },
+        function setupFlexibleAgenda() {
+            const agendaContainer = document.getElementById('agenda-container');
+            const activities = {
+                'costas': { name: 'Costas & Bíceps', color: 'costas', iconUrl: 'back.svg', iconFallback: `<svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 17.25h16.5M5.25 6.75v10.5m13.5-10.5v10.5" /></svg>` },
+                'peito': { name: 'Peito & Ombros', color: 'peito-ombros', iconUrl: 'chest.svg', iconFallback: `<svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 17.25h16.5M5.25 6.75v10.5m13.5-10.5v10.5" /></svg>` },
+                'pernas': { name: 'Pernas', color: 'pernas', iconUrl: 'legs.svg', iconFallback: `<svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4a2 2 0 100 4 2 2 0 000-4z" /><path stroke-linecap="round" stroke-linejoin="round" d="M7 21v-4a5 5 0 015-5h0a5 5 0 015 5v4" /><path stroke-linecap="round" stroke-linejoin="round" d="M5 21h14" /></svg>`},
+                'pedal': { name: 'Pedal', color: 'cardio', iconUrl: 'bike.svg', iconFallback: `<svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 7.5l-3.75 3.75M6.75 19.5l3.75-3.75" /><circle cx="8" cy="18" r="3" /><circle cx="16" cy="6" r="3" /></svg>`},
+                'escalada': { name: 'Escalada', color: 'cardio', iconUrl: 'climb.svg', iconFallback: `<svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6" /><circle cx="12" cy="4" r="2" /><path stroke-linecap="round" stroke-linejoin="round" d="M10 16l-4 4m8-4l4 4" /></svg>`},
+                'mobilidade': { name: 'Descanso Ativo', color: 'mobilidade', iconUrl: 'mobility.svg', iconFallback: `<svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4a2 2 0 100 4 2 2 0 000-4z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9.75L12 13.5l-3.75-3.75M5.25 21v-3.75a3.75 3.75 0 013.75-3.75h6a3.75 3.75 0 013.75 3.75V21" /></svg>`},
+                'descanso': { name: 'Descanso', color: 'descanso', iconUrl: 'rest.svg', iconFallback: `<svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 9h4l-4 6h4m4-6h4l-4 6h4" /></svg>`}
+            };
+            
+            let weeklySchedule = JSON.parse(localStorage.getItem('weeklySchedule')) || [
+                { day: 'Seg', activityId: 'costas' }, { day: 'Ter', activityId: 'mobilidade' },
+                { day: 'Qua', activityId: 'pedal' }, { day: 'Qui', activityId: 'peito' },
+                { day: 'Sex', activityId: 'pernas' }, { day: 'Sáb', activityId: 'escalada' },
+                { day: 'Dom', activityId: 'pedal' }
             ];
 
-            const calendarGrid = document.querySelector('.calendar-grid');
-            let draggedItem = null;
-            let placeholder = null;
+            let activeEditorIndex = null;
 
-            const createDayElement = (itemData, index) => {
-                const dayEl = document.createElement('div');
-                dayEl.classList.add('calendar-day');
-                dayEl.dataset.index = index;
-                dayEl.setAttribute('draggable', 'true');
-
-                const header = document.createElement('div');
-                header.className = `day-header header-${itemData.color}`;
-                header.textContent = itemData.day;
-                
-                const eventEl = document.createElement('a');
-                eventEl.className = 'event';
-                eventEl.href = itemData.href || '#';
-
-                if (itemData.icon) {
-                    eventEl.innerHTML = `<img src="${itemData.icon}" alt="${itemData.activity}" class="w-6 h-6 mx-auto">`;
-                } else {
-                    eventEl.innerHTML = `<span class="text-${itemData.color}">${itemData.activity}</span>`;
-                }
-
-                dayEl.appendChild(header);
-                dayEl.appendChild(eventEl);
-                return dayEl;
+            const createIconHTML = (activity) => {
+                // CORREÇÃO: As aspas dentro do SVG precisam ser escapadas para o atributo 'onerror'
+                const escapedSVG = activity.iconFallback.replace(/"/g, "'");
+                return `<img src="${activity.iconUrl}" onerror="this.outerHTML = \`${escapedSVG}\`" alt="icon">`;
             };
 
-            const renderCalendar = () => {
-                calendarGrid.innerHTML = '';
-                scheduleData.forEach((item, index) => {
-                    const dayEl = createDayElement(item, index);
-                    calendarGrid.appendChild(dayEl);
+            const renderAgenda = () => {
+                agendaContainer.innerHTML = '';
+                weeklySchedule.forEach((daySchedule, index) => {
+                    const activity = activities[daySchedule.activityId];
+                    const itemEl = document.createElement('div');
+                    itemEl.className = `day-item ${activeEditorIndex === index ? 'active' : ''}`;
+
+                    itemEl.innerHTML = `
+                        <div class="day-display" data-index="${index}">
+                            <div class="day-name">${daySchedule.day}</div>
+                            <div class="activity-color-bar color-${activity.color.replace('-ombros','')}"></div>
+                            <div class="activity-icon">${createIconHTML(activity)}</div>
+                            <div class="activity-name">${activity.name}</div>
+                            <div class="edit-icon">
+                                <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+                            </div>
+                        </div>
+                        <div class="activity-options ${activeEditorIndex === index ? '' : 'hidden'}">
+                            ${Object.keys(activities).map(id => {
+                                const act = activities[id];
+                                return `
+                                <button class="option-btn option-${act.color.replace('-biceps','').replace('-ombros','')} ${daySchedule.activityId === id ? 'selected' : ''}" title="${act.name}" onclick="updateActivity(${index}, '${id}')">
+                                    ${createIconHTML(act)}
+                                </button>
+                            `}).join('')}
+                        </div>
+                    `;
+                    agendaContainer.appendChild(itemEl);
+                });
+                
+                document.querySelectorAll('.day-display').forEach(el => {
+                    el.addEventListener('click', (e) => {
+                        const index = parseInt(e.currentTarget.dataset.index, 10);
+                        activeEditorIndex = activeEditorIndex === index ? null : index;
+                        renderAgenda();
+                    });
                 });
             };
-
-            const swapElements = (index1, index2) => {
-                [scheduleData[index1], scheduleData[index2]] = [scheduleData[index2], scheduleData[index1]];
-                renderCalendar();
+            
+            window.updateActivity = (dayIndex, activityId) => {
+                weeklySchedule[dayIndex].activityId = activityId;
+                localStorage.setItem('weeklySchedule', JSON.stringify(weeklySchedule));
+                activeEditorIndex = null;
+                renderAgenda();
             };
 
-            calendarGrid.addEventListener('dragstart', (e) => {
-                const target = e.target.closest('.calendar-day');
-                if (target) {
-                    draggedItem = target;
-                    setTimeout(() => target.classList.add('dragging-source'), 0);
-                }
-            });
-
-            calendarGrid.addEventListener('dragend', () => {
-                if (draggedItem) {
-                    draggedItem.classList.remove('dragging-source');
-                    draggedItem = null;
-                }
-            });
-
-            calendarGrid.addEventListener('dragover', (e) => {
-                e.preventDefault();
-                const target = e.target.closest('.calendar-day');
-                if (target && target !== draggedItem) {
-                    document.querySelectorAll('.drag-over').forEach(el => el.classList.remove('drag-over'));
-                    target.classList.add('drag-over');
-                }
-            });
-
-            calendarGrid.addEventListener('dragleave', (e) => {
-                e.target.closest('.calendar-day')?.classList.remove('drag-over');
-            });
-
-            calendarGrid.addEventListener('drop', (e) => {
-                e.preventDefault();
-                const target = e.target.closest('.calendar-day');
-                document.querySelectorAll('.drag-over').forEach(el => el.classList.remove('drag-over'));
-                if (target && draggedItem) {
-                    const fromIndex = parseInt(draggedItem.dataset.index, 10);
-                    const toIndex = parseInt(target.dataset.index, 10);
-                    swapElements(fromIndex, toIndex);
-                }
-            });
-            
-            // Renderização inicial
-            renderCalendar();
+            renderAgenda();
         }
-
     </script>
 </body>
 
