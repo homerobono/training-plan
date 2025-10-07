@@ -288,9 +288,9 @@
                     <tr class="details-row hidden"><td colspan="3">Melhora a flexibilidade do quadril, essencial para escalada.</td></tr>
                     <tr class="toggle-row" onclick="toggleDetails(this)"><td><img src="img/shoulders.svg" onerror="this.style.display='none'" class="w-6 h-6 mx-auto" alt="Ombros"></td><td class="exercise-name">Alongamento "Rosca Francesa"</td><td>30s x 2-3 por lado</td></tr>
                     <tr class="details-row hidden"><td colspan="3">Melhora a mobilidade dos ombros e peitoral.</td></tr>
-                    <tr class="toggle-row" onclick="toggleDetails(this)"><td><img src="img/wrists.svg" onerror="this.style.display='none'" class="w-6 h-6 mx-auto" alt="Punhos"></td><td class="exercise-name">Rotação de Punhos e Antebraços</td><td>30s x 2-3</td></tr>
+                    <tr class="toggle-row" onclick="toggleDetails(this)"><td><img src="img/wrist.svg" onerror="this.style.display='none'" class="w-6 h-6 mx-auto" alt="Punhos"></td><td class="exercise-name">Rotação de Punhos e Antebraços</td><td>30s x 2-3</td></tr>
                     <tr class="details-row hidden"><td colspan="3">Alonga os antebraços e punhos.</td></tr>
-                    <tr class="toggle-row" onclick="toggleDetails(this)"><td><img src="img/thoracic.svg" onerror="this.style.display='none'" class="w-6 h-6 mx-auto" alt="Torácica"></td><td class="exercise-name">Alongamento de Coluna Torácica</td><td>30s x 2-3 por lado</td></tr>
+                    <tr class="toggle-row" onclick="toggleDetails(this)"><td><img src="img/torso.svg" onerror="this.style.display='none'" class="w-6 h-6 mx-auto" alt="Torácica"></td><td class="exercise-name">Alongamento de Coluna Torácica</td><td>30s x 2-3 por lado</td></tr>
                     <tr class="details-row hidden"><td colspan="3">Ajuda na rotação e estabilidade do tronco.</td></tr>
                 </tbody>
             </table>
@@ -340,7 +340,7 @@
         function setupFlexibleAgenda() {
             const agendaContainer = document.getElementById('agenda-container');
             const activities = {
-                'costas': { name: 'Costas & Bíceps', color: 'costas', iconUrl: 'img/back.svg', iconFallback: `<svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 17.25h16.5M5.25 6.75v10.5m13.5-10.5v10.5" /></svg>` },
+                'costas': { name: 'Costas & Bíceps', color: 'costas', iconUrl: 'img/biceps.svg', iconFallback: `<svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 17.25h16.5M5.25 6.75v10.5m13.5-10.5v10.5" /></svg>` },
                 'peito': { name: 'Peito & Ombros', color: 'peito-ombros', iconUrl: 'img/chest.svg', iconFallback: `<svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 17.25h16.5M5.25 6.75v10.5m13.5-10.5v10.5" /></svg>` },
                 'pernas': { name: 'Pernas', color: 'pernas', iconUrl: 'img/legs.svg', iconFallback: `<svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4a2 2 0 100 4 2 2 0 000-4z" /><path stroke-linecap="round" stroke-linejoin="round" d="M7 21v-4a5 5 0 015-5h0a5 5 0 015 5v4" /><path stroke-linecap="round" stroke-linejoin="round" d="M5 21h14" /></svg>`},
                 'pedal': { name: 'Pedal', color: 'cardio', iconUrl: 'img/bike.svg', iconFallback: `<svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 7.5l-3.75 3.75M6.75 19.5l3.75-3.75" /><circle cx="8" cy="18" r="3" /><circle cx="16" cy="6" r="3" /></svg>`},
@@ -351,7 +351,7 @@
             
             let weeklySchedule = JSON.parse(localStorage.getItem('weeklySchedule')) || [
                 { day: 'Seg', activityId: 'descanso' }, { day: 'Ter', activityId: 'costas' },
-                { day: 'Qua', activityId: 'descanso' }, { day: 'Qui', activityId: 'peito' },
+                { day: 'Qua', activityId: 'pedal' }, { day: 'Qui', activityId: 'peito' },
                 { day: 'Sex', activityId: 'pernas' }, { day: 'Sáb', activityId: 'escalada' },
                 { day: 'Dom', activityId: 'pedal' }
             ];
