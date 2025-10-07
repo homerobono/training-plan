@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="/training-plan/favicon.ico">
-    <title>Plano de Treino V30</title>
+    <title>Plano de Treino</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,7 +47,7 @@
         h2#forca-pernas { color: #2980b9; }
         h2#mobilidade { color: #8e44ad; }
 
-        /* --- Novo Layout de Agenda --- */
+        /* --- Layout de Agenda --- */
         .agenda-list {
             margin-bottom: 2.5rem;
             margin-top: 1rem;
@@ -58,11 +58,15 @@
             border-radius: 8px;
             margin-bottom: 8px;
             overflow: hidden;
-            transition: box-shadow 0.2s;
+            transition: box-shadow 0.2s, border-color 0.2s;
         }
         
         .day-item.active {
-             box-shadow: 0 0 0 2px #3b82f6; /* Destaque azul ao editar */
+             box-shadow: 0 0 0 2px #3b82f6;
+        }
+        
+        .day-item.has-warning {
+            border-color: #f59e0b;
         }
 
         .day-display {
@@ -107,6 +111,14 @@
             width: 20px;
             height: 20px;
             stroke: #9ca3af;
+        }
+        
+        .warning-icon {
+            width: 20px;
+            height: 20px;
+            color: #f59e0b;
+            margin-left: auto;
+            margin-right: 8px;
         }
         
         .activity-options {
@@ -156,8 +168,6 @@
         
         .option-btn svg, .option-btn img { width: 20px; height: 20px; }
 
-
-        /* --- Outros Estilos --- */
         .content-section { margin-bottom: 1.5rem; }
         table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
         th, td { padding: 10px 8px; text-align: left; font-size: 0.85rem; border-bottom: 1px solid #f1f1f1; }
@@ -320,8 +330,8 @@
         function setupFlexibleAgenda() {
             const agendaContainer = document.getElementById('agenda-container');
             const activities = {
-                'costas': { name: 'Costas & Bíceps', color: 'costas', iconUrl: 'img/biceps.svg', iconFallback: `<svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 17.25h16.5M5.25 6.75v10.5m13.5-10.5v10.5" /></svg>` },
-                'peito': { name: 'Peito & Ombros', color: 'peito-ombros', iconUrl: 'img/shoulders.svg', iconFallback: `<svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 17.25h16.5M5.25 6.75v10.5m13.5-10.5v10.5" /></svg>` },
+                'costas': { name: 'Costas & Bíceps', color: 'costas', iconUrl: 'img/back.svg', iconFallback: `<svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 17.25h16.5M5.25 6.75v10.5m13.5-10.5v10.5" /></svg>` },
+                'peito': { name: 'Peito & Ombros', color: 'peito-ombros', iconUrl: 'img/chest.svg', iconFallback: `<svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 17.25h16.5M5.25 6.75v10.5m13.5-10.5v10.5" /></svg>` },
                 'pernas': { name: 'Pernas', color: 'pernas', iconUrl: 'img/legs.svg', iconFallback: `<svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4a2 2 0 100 4 2 2 0 000-4z" /><path stroke-linecap="round" stroke-linejoin="round" d="M7 21v-4a5 5 0 015-5h0a5 5 0 015 5v4" /><path stroke-linecap="round" stroke-linejoin="round" d="M5 21h14" /></svg>`},
                 'pedal': { name: 'Pedal', color: 'cardio', iconUrl: 'img/bike.svg', iconFallback: `<svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 7.5l-3.75 3.75M6.75 19.5l3.75-3.75" /><circle cx="8" cy="18" r="3" /><circle cx="16" cy="6" r="3" /></svg>`},
                 'escalada': { name: 'Escalada', color: 'cardio', iconUrl: 'img/climb.svg', iconFallback: `<svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6" /><circle cx="12" cy="4" r="2" /><path stroke-linecap="round" stroke-linejoin="round" d="M10 16l-4 4m8-4l4 4" /></svg>`},
@@ -337,6 +347,37 @@
             ];
 
             let activeEditorIndex = null;
+            
+            const validateSchedule = (schedule) => {
+                const warnings = Array(7).fill(null).map(() => ({ hasWarning: false, message: '' }));
+                const strengthActivities = ['costas', 'peito', 'pernas'];
+
+                for (let i = 0; i < 7; i++) {
+                    const currentDay = schedule[i];
+                    const nextDay = schedule[(i + 1) % 7];
+
+                    // Regra 1: Atividades de força iguais em dias consecutivos
+                    if (strengthActivities.includes(currentDay.activityId) && currentDay.activityId === nextDay.activityId) {
+                        warnings[i].hasWarning = true;
+                        warnings[i].message += 'Duas sessões de força idênticas em dias consecutivos.\n';
+                    }
+                    
+                    // Regra 2: Escalada após Costas
+                    if (currentDay.activityId === 'costas' && nextDay.activityId === 'escalada') {
+                        warnings[(i + 1) % 7].hasWarning = true;
+                        warnings[(i + 1) % 7].message += 'Escalada não é recomendada após o treino de costas.\n';
+                    }
+
+                    // Regra 3: Pedal e Pernas
+                    if ((currentDay.activityId === 'pernas' && nextDay.activityId === 'pedal') || (currentDay.activityId === 'pedal' && nextDay.activityId === 'pernas')) {
+                        warnings[i].hasWarning = true;
+                        warnings[i].message += 'Treino de pernas e pedal em dias consecutivos não é ideal.\n';
+                        warnings[(i + 1) % 7].hasWarning = true;
+                        warnings[(i + 1) % 7].message += 'Treino de pernas e pedal em dias consecutivos não é ideal.\n';
+                    }
+                }
+                return warnings;
+            };
 
             const createIconHTML = (activity) => {
                 const escapedSVG = activity.iconFallback.replace(/"/g, "'");
@@ -345,10 +386,19 @@
 
             const renderAgenda = () => {
                 agendaContainer.innerHTML = '';
+                const warnings = validateSchedule(weeklySchedule);
+
                 weeklySchedule.forEach((daySchedule, index) => {
                     const activity = activities[daySchedule.activityId];
+                    const warning = warnings[index];
                     const itemEl = document.createElement('div');
-                    itemEl.className = `day-item ${activeEditorIndex === index ? 'active' : ''}`;
+                    itemEl.className = `day-item ${activeEditorIndex === index ? 'active' : ''} ${warning.hasWarning ? 'has-warning' : ''}`;
+
+                    const warningIconHTML = warning.hasWarning
+                        ? `<div class="warning-icon" title="${warning.message.trim()}">
+                               <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" /></svg>
+                           </div>`
+                        : '';
 
                     itemEl.innerHTML = `
                         <div class="day-display" data-index="${index}">
@@ -356,6 +406,7 @@
                             <div class="activity-color-bar color-${activity.color.replace('-ombros','')}"></div>
                             <div class="activity-icon">${createIconHTML(activity)}</div>
                             <div class="activity-name">${activity.name}</div>
+                            ${warningIconHTML}
                             <div class="edit-icon">
                                 <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
                             </div>
