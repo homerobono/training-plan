@@ -47,7 +47,6 @@
         h2#forca-pernas { color: #2980b9; }
         h2#mobilidade { color: #8e44ad; }
 
-        /* --- Layout de Agenda --- */
         .agenda-list {
             margin-bottom: 2.5rem;
             margin-top: 1rem;
@@ -61,6 +60,11 @@
             transition: box-shadow 0.2s, border-color 0.2s;
         }
         
+        .day-item.is-today {
+            border-color: #3b82f6;
+            border-width: 2px;
+        }
+
         .day-item.active {
              box-shadow: 0 0 0 2px #3b82f6;
         }
@@ -72,8 +76,8 @@
         .global-warning {
             display: flex;
             align-items: center;
-            justify-content: flex-start; /* Garante alinhamento à esquerda */
-            text-align: left; /* Garante alinhamento do texto à esquerda */
+            justify-content: flex-start;
+            text-align: left;
             background-color: #fefce8;
             color: #a16207;
             padding: 12px;
@@ -139,7 +143,7 @@
             width: 20px;
             height: 20px;
             color: #f59e0b;
-            margin-left: auto;
+            margin-left: 8px;
             margin-right: 8px;
         }
         
@@ -231,17 +235,17 @@
                 <thead><tr><th>Exercício</th><th>S x R - D</th><th>Carga</th></tr></thead>
                 <tbody>
                     <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Puxada na Barra Fixa</td><td>3-4x(6-8) - 90s</td><td><input type="text" data-exercise-id="carga-puxada-barra-fixa" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Excelente para fortalecer as costas e os braços. Use a máquina de assistência, um elástico ou, se já for forte o suficiente, faça com o peso do corpo. Mantenha o peito aberto e a contração nas costas.</td></tr>
+                    <tr class="details-row hidden"><td colspan="3">Excelente para fortalecer as costas e os braços. Use a máquina de assistência, um elástico ou, se já for forte o suficiente, faça com o peso do corpo.</td></tr>
                     <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Remada Curvada com Halteres</td><td>3-4x(10-12) - 60s</td><td><input type="text" data-exercise-id="carga-remada-curvada-halteres" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Fortalece a parte média das costas e ombros. Mantenha as costas retas, incline o tronco para a frente e puxe os halteres em direção ao seu quadril, contraindo as escápulas.</td></tr>
+                    <tr class="details-row hidden"><td colspan="3">Fortalece a parte média das costas e ombros. Mantenha as costas retas e puxe os halteres em direção ao seu quadril.</td></tr>
                     <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Puxada Alta</td><td>3-4x(10-12) - 60s</td><td><input type="text" data-exercise-id="carga-puxada-alta" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Trabalha o latíssimo do dorso, músculo essencial para a puxada na escalada. Puxe a barra em direção ao peito, focando na força das costas e não apenas dos braços.</td></tr>
+                    <tr class="details-row hidden"><td colspan="3">Trabalha o latíssimo do dorso, músculo essencial para a puxada na escalada.</td></tr>
                     <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Remada Sentada na Máquina</td><td>3-4x(10-12) - 60s</td><td><input type="text" data-exercise-id="carga-remada-sentada-maquina" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Complementa a remada curvada, fortalecendo a região média e alta das costas. Mantenha o tronco reto e puxe o peso em direção ao abdômen, contraindo as escápulas.</td></tr>
+                    <tr class="details-row hidden"><td colspan="3">Fortalece a região média e alta das costas.</td></tr>
                     <tr class="superset-group toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Rosca Direta com Barra</td><td>3-4x(10-12)</td><td><input type="text" data-exercise-id="carga-rosca-direta" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Foco no bíceps e antebraços, importantes para a força de agarre. Mantenha o tronco parado e os cotovelos fixos ao lado do corpo.</td></tr>
+                    <tr class="details-row hidden"><td colspan="3">Foco no bíceps e antebraços.</td></tr>
                     <tr class="superset-group toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Prancha (Core)</td><td>3-4x(45-60s) - 60s</td><td><input type="text" data-exercise-id="carga-prancha" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Fortalece o core (abdômen e lombar), fundamental para a estabilidade do corpo. Mantenha o corpo reto como uma prancha, sem deixar o quadril cair ou subir demais.</td></tr>
+                    <tr class="details-row hidden"><td colspan="3">Fortalece o core (abdômen e lombar).</td></tr>
                 </tbody>
             </table>
         </div>
@@ -251,22 +255,18 @@
             <table class="collapsible-content hidden">
                 <thead><tr><th>Exercício</th><th>S x R - D</th><th>Carga</th></tr></thead>
                 <tbody>
-                    <tr class="toggle-row" onclick="toggleDetails(this)">
-                        <td class="exercise-name">Supino Inclinado c/ Halteres (Pirâmide)</td>
-                        <td>4x(12, 10, 8, 8) - 90s</td>
-                        <td><input type="text" data-exercise-id="carga-supino-inclinado" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td>
-                    </tr>
+                    <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Supino Inclinado c/ Halteres (Pirâmide)</td><td>4x(12, 10, 8, 8) - 90s</td><td><input type="text" data-exercise-id="carga-supino-inclinado" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
                     <tr class="details-row hidden"><td colspan="3">Foca na parte superior do peito e ombros. Deite-se em um banco inclinado e empurre os halteres para cima. Controle o movimento na descida.<br><b>Nota Pirâmide:</b> Comece com um peso para 12 repetições e aumente a carga a cada série, diminuindo as repetições.</td></tr>
                     <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Desenv. de Ombro c/ Halteres</td><td>3-4x(8-12) - 60s</td><td><input type="text" data-exercise-id="carga-desenv-ombro" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Fortalece os ombros. Sente-se ou fique em pé com halteres e empurre-os para cima, acima da cabeça. Mantenha as escápulas estáveis.</td></tr>
+                    <tr class="details-row hidden"><td colspan="3">Fortalece os ombros. Sente-se ou fique em pé e empurre os halteres para cima.</td></tr>
                     <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Flexão de Braço</td><td>3-4x(10-15) - 60s</td><td><input type="text" data-exercise-id="carga-flexao-braco" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Trabalha peito, ombros e tríceps. Mantenha o corpo alinhado da cabeça aos pés. Pode ser adaptada com os joelhos no chão.</td></tr>
+                    <tr class="details-row hidden"><td colspan="3">Trabalha peito, ombros e tríceps.</td></tr>
                     <tr class="superset-group toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Tríceps Testa</td><td>3-4x(10-15)</td><td><input type="text" data-exercise-id="carga-triceps-testa" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Isola o músculo tríceps. Deite-se em um banco, estenda os braços para cima e flexione os cotovelos, levando a barra ou halteres em direção à testa.</td></tr>
+                    <tr class="details-row hidden"><td colspan="3">Isola o músculo tríceps.</td></tr>
                     <tr class="superset-group toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Face Pull</td><td>3x(12-15) - 60s</td><td><input type="text" data-exercise-id="carga-face-pull" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Fortalece a porção posterior do ombro e as escápulas, fundamental para a saúde do ombro. Segure uma corda em uma polia alta e puxe-a em direção ao seu rosto, girando as mãos para fora.</td></tr>
+                    <tr class="details-row hidden"><td colspan="3">Fortalece a porção posterior do ombro e as escápulas.</td></tr>
                     <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Elevação Lateral c/ Halteres</td><td>3x(12-15) - 60s</td><td><input type="text" data-exercise-id="carga-elevacao-lateral" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Fortalece a porção lateral do ombro. Em pé, com os halteres ao lado do corpo, levante-os lateralmente até a altura dos ombros, mantendo os cotovelos levemente flexionados.</td></tr>
+                    <tr class="details-row hidden"><td colspan="3">Fortalece a porção lateral do ombro.</td></tr>
                 </tbody>
             </table>
         </div>
@@ -276,22 +276,18 @@
             <table class="collapsible-content hidden">
                 <thead><tr><th>Exercício</th><th>S x R - D</th><th>Carga</th></tr></thead>
                 <tbody>
-                    <tr class="toggle-row" onclick="toggleDetails(this)">
-                        <td class="exercise-name">Agach. Livre c/ Barra (Pirâmide)</td>
-                        <td>4x(12, 10, 8, 6) - 90-120s</td>
-                        <td><input type="text" data-exercise-id="carga-agachamento-livre" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td>
-                    </tr>
-                    <tr class="details-row hidden"><td colspan="3">Fundamental para o fortalecimento das pernas e joelhos. Mantenha os pés afastados na largura dos ombros, desça o quadril como se fosse sentar e suba.<br><b>Nota Pirâmide:</b> Comece com um peso para 12 repetições e aumente a carga a cada série, diminuindo as repetições.</td></tr>
+                    <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Agach. Livre c/ Barra (Pirâmide)</td><td>4x(12, 10, 8, 6) - 90-120s</td><td><input type="text" data-exercise-id="carga-agachamento-livre" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
+                    <tr class="details-row hidden"><td colspan="3">Fundamental para o fortalecimento das pernas e joelhos.<br><b>Nota Pirâmide:</b> Comece com um peso para 12 repetições e aumente a carga a cada série, diminuindo as repetições.</td></tr>
                     <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Avanço com Halteres</td><td>3-4x(10-12 por perna) - 60s</td><td><input type="text" data-exercise-id="carga-avanco-halteres" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Fortalece quadríceps, glúteos e a estabilidade dos joelhos. Dê um passo grande para a frente, descendo o tronco até que o joelho da frente forme um ângulo de 90 graus.</td></tr>
+                    <tr class="details-row hidden"><td colspan="3">Fortalece quadríceps, glúteos e a estabilidade dos joelhos.</td></tr>
                     <tr class="superset-group toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Cadeira Extensora</td><td>3-4x(12-15)</td><td><input type="text" data-exercise-id="carga-cadeira-extensora" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Isola o quadríceps. Sente-se na máquina e estenda as pernas para cima. É um ótimo exercício de baixo impacto.</td></tr>
+                    <tr class="details-row hidden"><td colspan="3">Isola o quadríceps. Ótimo exercício de baixo impacto.</td></tr>
                     <tr class="superset-group toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Mesa Flexora</td><td>3-4x(10-12) - 60s</td><td><input type="text" data-exercise-id="carga-mesa-flexora" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Fortalece os isquiotibiais (parte de trás da coxa). Deite-se na máquina de barriga para baixo e flexione as pernas, levando os calcanhares em direção aos glúteos.</td></tr>
+                    <tr class="details-row hidden"><td colspan="3">Fortalece os isquiotibiais (parte de trás da coxa).</td></tr>
                     <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Stiff com Halteres</td><td>3x(10-12) - 60s</td><td><input type="text" data-exercise-id="carga-stiff" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Foco nos isquiotibiais e glúteos. Mantenha as pernas semi-flexionadas e desça o tronco com as costas retas.</td></tr>
+                    <tr class="details-row hidden"><td colspan="3">Foco nos isquiotibiais e glúteos.</td></tr>
                     <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Panturrilha em Pé</td><td>3-4x(15-20) - 45s</td><td><input type="text" data-exercise-id="carga-panturrilha-pe" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Fortalece a panturrilha. Fique em pé e levante os calcanhares, apoiando-se na ponta dos pés.</td></tr>
+                    <tr class="details-row hidden"><td colspan="3">Fortalece a panturrilha.</td></tr>
                 </tbody>
             </table>
         </div>
@@ -302,13 +298,13 @@
                 <thead><tr><th>Área</th><th>Exercício</th><th>T x R</th></tr></thead>
                 <tbody>
                     <tr class="toggle-row" onclick="toggleDetails(this)"><td><img src="img/spine.svg" onerror="this.style.display='none'" class="w-6 h-6 mx-auto" alt="Coluna"></td><td class="exercise-name">Mobilidade Felino-Vaca</td><td>10 x 2-3</td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Comece de quatro. Inspire, arqueando as costas e olhando para cima (vaca). Expire, arredondando a coluna e levando o queixo ao peito (gato).</td></tr>
+                    <tr class="details-row hidden"><td colspan="3">Comece de quatro. Inspire, arqueando as costas e olhando para cima (vaca). Expire, arredondando a coluna (gato).</td></tr>
                     <tr class="toggle-row" onclick="toggleDetails(this)"><td><img src="img/hips.svg" onerror="this.style.display='none'" class="w-6 h-6 mx-auto" alt="Quadril"></td><td class="exercise-name">Spiderman Lunge com Rotação</td><td>8-10 reps por lado x 2-3</td></tr>
                     <tr class="details-row hidden"><td colspan="3">Em posição de prancha, traga um pé para o lado de fora da mão. Gire o tronco, estendendo o braço do mesmo lado para o teto.</td></tr>
                     <tr class="toggle-row" onclick="toggleDetails(this)"><td><img src="img/hips.svg" onerror="this.style.display='none'" class="w-6 h-6 mx-auto" alt="Quadril"></td><td class="exercise-name">Rotação de Quadril 90/90</td><td>8-10 rotações x 2-3</td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Sente-se com os joelhos dobrados a 90 graus. Gire ambos os joelhos para um lado e depois para o outro, mantendo os pés no lugar.</td></tr>
+                    <tr class="details-row hidden"><td colspan="3">Sente-se com os joelhos dobrados a 90 graus. Gire ambos os joelhos para um lado e depois para o outro.</td></tr>
                     <tr class="toggle-row" onclick="toggleDetails(this)"><td><img src="img/hips.svg" onerror="this.style.display='none'" class="w-6 h-6 mx-auto" alt="Quadril"></td><td class="exercise-name">Alongamento do Quadril em Posição de "Pombo"</td><td>60s x 2-3 por lado</td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Comece de quatro, traga um joelho para a frente e estenda a outra perna para trás, sentindo o alongamento no glúteo.</td></tr>
+                    <tr class="details-row hidden"><td colspan="3">Comece de quatro, traga um joelho para a frente e estenda a outra perna para trás.</td></tr>
                     <tr class="toggle-row" onclick="toggleDetails(this)"><td><img src="img/shoulders.svg" onerror="this.style.display='none'" class="w-6 h-6 mx-auto" alt="Ombros"></td><td class="exercise-name">Alongamento "Rosca Francesa"</td><td>30s x 2-3 por lado</td></tr>
                     <tr class="details-row hidden"><td colspan="3">Leve um braço por trás da cabeça e puxe suavemente o cotovelo com a outra mão.</td></tr>
                     <tr class="toggle-row" onclick="toggleDetails(this)"><td><img src="img/wrists.svg" onerror="this.style.display='none'" class="w-6 h-6 mx-auto" alt="Punhos"></td><td class="exercise-name">Rotação de Punhos e Antebraços</td><td>30s x 2-3</td></tr>
@@ -504,4 +500,3 @@
 </body>
 
 </html>
-
