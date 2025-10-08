@@ -68,6 +68,28 @@
         .day-item.has-warning {
             border-color: #f59e0b;
         }
+        
+        .global-warning {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; /* Alinha o conteúdo à esquerda */
+            text-align: left; /* Alinha o texto à esquerda */
+            background-color: #fefce8;
+            color: #a16207;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #fef08a;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .global-warning .warning-icon {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
 
         .day-display {
             display: flex;
@@ -117,7 +139,7 @@
             width: 20px;
             height: 20px;
             color: #f59e0b;
-            margin-left: auto;
+            margin-left: 8px;
             margin-right: 8px;
         }
         
@@ -198,6 +220,7 @@
         <p class="mb-6 text-center text-sm text-gray-700">Otimizado para força e recuperação. Toque em um dia para alterar a atividade.</p>
 
         <h2 id="resumo-semanal" class="font-bold">RESUMO SEMANAL</h2>
+        <div id="agenda-global-warning" class="hidden"></div>
         <div id="agenda-container" class="agenda-list">
             <!-- Agenda será gerada pelo JS -->
         </div>
@@ -216,7 +239,7 @@
                     <tr class="toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Remada Sentada na Máquina</td><td>3-4x(10-12) - 60s</td><td><input type="text" data-exercise-id="carga-remada-sentada-maquina" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
                     <tr class="details-row hidden"><td colspan="3">Complementa a remada curvada, fortalecendo a região média e alta das costas. Mantenha o tronco reto e puxe o peso em direção ao abdômen, contraindo as escápulas.</td></tr>
                     <tr class="superset-group toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Rosca Direta com Barra</td><td>3-4x(10-12)</td><td><input type="text" data-exercise-id="carga-rosca-direta" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
-                    <tr class="details-row hidden"><td colspan="3">Foca no bíceps e antebraços, importantes para a força de agarre. Mantenha o tronco parado e os cotovelos fixos ao lado do corpo.</td></tr>
+                    <tr class="details-row hidden"><td colspan="3">Foco no bíceps e antebraços, importantes para a força de agarre. Mantenha o tronco parado e os cotovelos fixos ao lado do corpo.</td></tr>
                     <tr class="superset-group toggle-row" onclick="toggleDetails(this)"><td class="exercise-name">Prancha (Core)</td><td>3-4x(45-60s) - 60s</td><td><input type="text" data-exercise-id="carga-prancha" oninput="saveCarga(this.dataset.exerciseId, this.value)" class="w-full text-sm p-1 border rounded-md"></td></tr>
                     <tr class="details-row hidden"><td colspan="3">Fortalece o core (abdômen e lombar), fundamental para a estabilidade do corpo. Mantenha o corpo reto como uma prancha, sem deixar o quadril cair ou subir demais.</td></tr>
                 </tbody>
@@ -340,7 +363,7 @@
         function setupFlexibleAgenda() {
             const agendaContainer = document.getElementById('agenda-container');
             const activities = {
-                'costas': { name: 'Costas & Bíceps', color: 'costas', iconUrl: 'img/back.svg', iconFallback: `<svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 17.25h16.5M5.25 6.75v10.5m13.5-10.5v10.5" /></svg>` },
+                'costas': { name: 'Costas & Bíceps', color: 'costas', iconUrl: 'img/biceps.svg', iconFallback: `<svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 17.25h16.5M5.25 6.75v10.5m13.5-10.5v10.5" /></svg>` },
                 'peito': { name: 'Peito & Ombros', color: 'peito-ombros', iconUrl: 'img/chest.svg', iconFallback: `<svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 17.25h16.5M5.25 6.75v10.5m13.5-10.5v10.5" /></svg>` },
                 'pernas': { name: 'Pernas', color: 'pernas', iconUrl: 'img/legs.svg', iconFallback: `<svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4a2 2 0 100 4 2 2 0 000-4z" /><path stroke-linecap="round" stroke-linejoin="round" d="M7 21v-4a5 5 0 015-5h0a5 5 0 015 5v4" /><path stroke-linecap="round" stroke-linejoin="round" d="M5 21h14" /></svg>`},
                 'pedal': { name: 'Pedal', color: 'cardio', iconUrl: 'img/bike.svg', iconFallback: `<svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 7.5l-3.75 3.75M6.75 19.5l3.75-3.75" /><circle cx="8" cy="18" r="3" /><circle cx="16" cy="6" r="3" /></svg>`},
@@ -383,7 +406,24 @@
                         warnings[i].message += 'Treino de pernas e pedal em dias consecutivos não é ideal.\n';
                     }
                 }
-                return warnings;
+                
+                let globalWarning = '';
+                const requiredActivities = {
+                    'costas': 'Costas & Bíceps', 'peito': 'Peito & Ombros',
+                    'pernas': 'Pernas', 'pedal': 'Pedal', 'escalada': 'Escalada'
+                };
+                const presentActivities = new Set(schedule.map(item => item.activityId));
+                const missingActivities = [];
+                for (const id in requiredActivities) {
+                    if (!presentActivities.has(id)) {
+                        missingActivities.push(requiredActivities[id]);
+                    }
+                }
+                if (missingActivities.length > 0) {
+                    globalWarning = `Faltam as seguintes atividades na semana: ${missingActivities.join(', ')}.`;
+                }
+                
+                return { warnings, globalWarning };
             };
 
             const createIconHTML = (activity) => {
@@ -393,7 +433,18 @@
 
             const renderAgenda = () => {
                 agendaContainer.innerHTML = '';
-                const warnings = validateSchedule(weeklySchedule);
+                const { warnings, globalWarning } = validateSchedule(weeklySchedule);
+
+                const warningContainer = document.getElementById('agenda-global-warning');
+                if (globalWarning) {
+                    warningContainer.innerHTML = `
+                        <div class="warning-icon"><svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" /></svg></div>
+                        <span>${globalWarning}</span>`;
+                    warningContainer.className = 'global-warning';
+                } else {
+                    warningContainer.innerHTML = '';
+                    warningContainer.className = 'hidden';
+                }
 
                 weeklySchedule.forEach((daySchedule, index) => {
                     const activity = activities[daySchedule.activityId];
