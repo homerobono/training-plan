@@ -1,0 +1,261 @@
+{
+  "activities": {
+    "costas": {
+      "name": "Costas & Bíceps",
+      "color": "costas",
+      "iconUrl": "img/biceps.svg",
+      "iconFallback": "<svg fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' d='M3.75 6.75h16.5M3.75 17.25h16.5M5.25 6.75v10.5m13.5-10.5v10.5' /></svg>"
+    },
+    "peito": {
+      "name": "Peito & Ombros",
+      "color": "peito-ombros",
+      "iconUrl": "img/chest.svg",
+      "iconFallback": "<svg fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' d='M3.75 6.75h16.5M3.75 17.25h16.5M5.25 6.75v10.5m13.5-10.5v10.5' /></svg>"
+    },
+    "pernas": {
+      "name": "Pernas",
+      "color": "pernas",
+      "iconUrl": "img/legs.svg",
+      "iconFallback": "<svg fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' d='M12 4a2 2 0 100 4 2 2 0 000-4z' /><path stroke-linecap='round' stroke-linejoin='round' d='M7 21v-4a5 5 0 015-5h0a5 5 0 015 5v4' /><path stroke-linecap='round' stroke-linejoin='round' d='M5 21h14' /></svg>"
+    },
+    "pedal": {
+      "name": "Pedal",
+      "color": "cardio",
+      "iconUrl": "img/bike.svg",
+      "iconFallback": "<svg fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' d='M16.5 7.5l-3.75 3.75M6.75 19.5l3.75-3.75' /><circle cx='8' cy='18' r='3' /><circle cx='16' cy='6' r='3' /></svg>"
+    },
+    "escalada": {
+      "name": "Escalada",
+      "color": "cardio",
+      "iconUrl": "img/climb.svg",
+      "iconFallback": "<svg fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' d='M12 6v6m0 0v6m0-6h6m-6 0H6' /><circle cx='12' cy='4' r='2' /><path stroke-linecap='round' stroke-linejoin='round' d='M10 16l-4 4m8-4l4 4' /></svg>"
+    },
+    "mobilidade": {
+      "name": "Descanso Ativo",
+      "color": "mobilidade",
+      "iconUrl": "img/mobility.svg",
+      "iconFallback": "<svg fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' d='M12 4a2 2 0 100 4 2 2 0 000-4z' /><path stroke-linecap='round' stroke-linejoin='round' d='M15.75 9.75L12 13.5l-3.75-3.75M5.25 21v-3.75a3.75 3.75 0 013.75-3.75h6a3.75 3.75 0 013.75 3.75V21' /></svg>"
+    },
+    "descanso": {
+      "name": "Descanso",
+      "color": "descanso",
+      "iconUrl": "img/rest.svg",
+      "iconFallback": "<svg fill='none' viewBox='0 0 24 24' stroke-width='2' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' d='M6 9h4l-4 6h4m4-6h4l-4 6h4' /></svg>"
+    }
+  },
+  "weeklySchedule": [
+    { "day": "Seg", "activityId": "descanso" },
+    { "day": "Ter", "activityId": "costas" },
+    { "day": "Qua", "activityId": "pedal" },
+    { "day": "Qui", "activityId": "peito" },
+    { "day": "Sex", "activityId": "pernas" },
+    { "day": "Sáb", "activityId": "escalada" },
+    { "day": "Dom", "activityId": "pedal" }
+  ],
+  "sections": [
+    {
+      "id": "forca-costas-biceps",
+      "title": "COSTAS E BÍCEPS",
+      "colorClass": "forca-costas-biceps-section",
+      "columns": [
+        { "key": "name", "title": "Exercício" },
+        { "key": "setsReps", "title": "S x R - D" },
+        { "key": "carga", "title": "Carga" }
+      ],
+      "exercises": [
+        {
+          "id": "carga-puxada-barra-fixa",
+          "name": "Puxada na Barra Fixa",
+          "setsReps": "3-4x(6-8) - 90s",
+          "note": "Excelente para fortalecer as costas e os braços. Use a máquina de assistência, um elástico ou, se já for forte o suficiente, faça com o peso do corpo."
+        },
+        {
+          "id": "carga-remada-curvada-halteres",
+          "name": "Remada Curvada com Halteres",
+          "setsReps": "3-4x(10-12) - 60s",
+          "note": "Fortalece a parte média das costas e ombros. Mantenha as costas retas e puxe os halteres em direção ao seu quadril."
+        },
+        {
+          "id": "carga-puxada-alta",
+          "name": "Puxada Alta",
+          "setsReps": "3-4x(10-12) - 60s",
+          "note": "Trabalha o latíssimo do dorso, músculo essencial para a puxada na escalada."
+        },
+        {
+          "id": "carga-remada-sentada-maquina",
+          "name": "Remada Sentada na Máquina",
+          "setsReps": "3-4x(10-12) - 60s",
+          "note": "Fortalece a região média e alta das costas."
+        },
+        {
+          "id": "carga-rosca-direta",
+          "name": "Rosca Direta com Barra",
+          "setsReps": "3-4x(10-12)",
+          "note": "Foco no bíceps e antebraços.",
+          "superset": true
+        },
+        {
+          "id": "carga-prancha",
+          "name": "Prancha (Core)",
+          "setsReps": "3-4x(45-60s) - 60s",
+          "note": "Fortalece o core (abdômen e lombar).",
+          "superset": true
+        }
+      ]
+    },
+    {
+      "id": "forca-peito-ombros",
+      "title": "PEITO E OMBROS",
+      "colorClass": "forca-peito-ombros-section",
+      "columns": [
+        { "key": "name", "title": "Exercício" },
+        { "key": "setsReps", "title": "S x R - D" },
+        { "key": "carga", "title": "Carga" }
+      ],
+      "exercises": [
+        {
+          "id": "carga-supino-inclinado",
+          "name": "Supino Inclinado c/ Halteres (Pirâmide)",
+          "setsReps": "4x(12, 10, 8, 8) - 90s",
+          "note": "Foca na parte superior do peito e ombros. Deite-se em um banco inclinado e empurre os halteres para cima. Controle o movimento na descida. <b>Nota Pirâmide:</b> Comece com um peso para 12 repetições e aumente a carga a cada série, diminuindo as repetições."
+        },
+        {
+          "id": "carga-desenv-ombro",
+          "name": "Desenv. de Ombro c/ Halteres",
+          "setsReps": "3-4x(8-12) - 60s",
+          "note": "Fortalece os ombros. Sente-se ou fique em pé e empurre os halteres para cima."
+        },
+        {
+          "id": "carga-flexao-braco",
+          "name": "Flexão de Braço",
+          "setsReps": "3-4x(10-15) - 60s",
+          "note": "Trabalha peito, ombros e tríceps."
+        },
+        {
+          "id": "carga-triceps-testa",
+          "name": "Tríceps Testa",
+          "setsReps": "3-4x(10-15)",
+          "note": "Isola o músculo tríceps.",
+          "superset": true
+        },
+        {
+          "id": "carga-face-pull",
+          "name": "Face Pull",
+          "setsReps": "3x(12-15) - 60s",
+          "note": "Fortalece a porção posterior do ombro e as escápulas.",
+          "superset": true
+        },
+        {
+          "id": "carga-elevacao-lateral",
+          "name": "Elevação Lateral c/ Halteres",
+          "setsReps": "3x(12-15) - 60s",
+          "note": "Fortalece a porção lateral do ombro."
+        }
+      ]
+    },
+    {
+      "id": "forca-pernas",
+      "title": "PERNAS",
+      "colorClass": "forca-pernas-section",
+      "columns": [
+        { "key": "name", "title": "Exercício" },
+        { "key": "setsReps", "title": "S x R - D" },
+        { "key": "carga", "title": "Carga" }
+      ],
+      "exercises": [
+        {
+          "id": "carga-agachamento-livre",
+          "name": "Agach. Livre c/ Barra (Pirâmide)",
+          "setsReps": "4x(12, 10, 8, 6) - 90-120s",
+          "note": "Fundamental para o fortalecimento das pernas e joelhos.<br><b>Nota Pirâmide:</b> Comece com um peso para 12 repetições e aumente a carga a cada série, diminuindo as repetições."
+        },
+        {
+          "id": "carga-avanco-halteres",
+          "name": "Avanço com Halteres",
+          "setsReps": "3-4x(10-12 por perna) - 60s",
+          "note": "Fortalece quadríceps, glúteos e a estabilidade dos joelhos."
+        },
+        {
+          "id": "carga-cadeira-extensora",
+          "name": "Cadeira Extensora",
+          "setsReps": "3-4x(12-15)",
+          "note": "Isola o quadríceps. Ótimo exercício de baixo impacto.",
+          "superset": true
+        },
+        {
+          "id": "carga-mesa-flexora",
+          "name": "Mesa Flexora",
+          "setsReps": "3-4x(10-12) - 60s",
+          "note": "Fortalece os isquiotibiais (parte de trás da coxa).",
+          "superset": true
+        },
+        {
+          "id": "carga-stiff",
+          "name": "Stiff com Halteres",
+          "setsReps": "3x(10-12) - 60s",
+          "note": "Foco nos isquiotibiais e glúteos."
+        },
+        {
+          "id": "carga-panturrilha-pe",
+          "name": "Panturrilha em Pé",
+          "setsReps": "3-4x(15-20) - 45s",
+          "note": "Fortalece a panturrilha."
+        }
+      ]
+    },
+    {
+      "id": "mobilidade",
+      "title": "MOBILIDADE E RECUPERAÇÃO",
+      "colorClass": "mobilidade-section",
+      "columns": [
+        { "key": "areaIcon", "title": "Área" },
+        { "key": "name", "title": "Exercício" },
+        { "key": "setsReps", "title": "T x R" }
+      ],
+      "exercises": [
+        {
+          "areaIcon": "img/spine.svg",
+          "name": "Mobilidade Felino-Vaca",
+          "setsReps": "10 x 2-3",
+          "note": "Comece de quatro. Inspire, arqueando as costas e olhando para cima (vaca). Expire, arredondando a coluna (gato)."
+        },
+        {
+          "areaIcon": "img/hips.svg",
+          "name": "Spiderman Lunge com Rotação",
+          "setsReps": "8-10 reps por lado x 2-3",
+          "note": "Em posição de prancha, traga um pé para o lado de fora da mão. Gire o tronco, estendendo o braço do mesmo lado para o teto."
+        },
+        {
+          "areaIcon": "img/hips.svg",
+          "name": "Rotação de Quadril 90/90",
+          "setsReps": "8-10 rotações x 2-3",
+          "note": "Sente-se com os joelhos dobrados a 90 graus. Gire ambos os joelhos para um lado e depois para o outro."
+        },
+        {
+          "areaIcon": "img/hips.svg",
+          "name": "Alongamento do Quadril em Posição de \"Pombo\"",
+          "setsReps": "60s x 2-3 por lado",
+          "note": "Comece de quatro, traga um joelho para a frente e estenda a outra perna para trás."
+        },
+        {
+          "areaIcon": "img/shoulders.svg",
+          "name": "Alongamento \"Rosca Francesa\"",
+          "setsReps": "30s x 2-3 por lado",
+          "note": "Leve um braço por trás da cabeça e puxe suavemente o cotovelo com a outra mão."
+        },
+        {
+          "areaIcon": "img/wrists.svg",
+          "name": "Rotação de Punhos e Antebraços",
+          "setsReps": "30s x 2-3",
+          "note": "De quatro, com as mãos no chão, gire as mãos para que os dedos apontem para os joelhos e incline-se para trás."
+        },
+        {
+          "areaIcon": "img/torso.svg",
+          "name": "Alongamento de Coluna Torácica",
+          "setsReps": "30s x 2-3 por lado",
+          "note": "Deite-se de lado com os joelhos flexionados. Gire a parte superior do tronco para o lado oposto, estendendo o braço."
+        }
+      ]
+    }
+  ]
+}
