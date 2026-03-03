@@ -4,7 +4,7 @@ let sections = [];
 let activeEditorIndex = null;
 
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('training-plan.json')
+    fetch('new-training-plan.json')
         .then(res => res.json())
         .then(plan => {
             activities = plan.activities;

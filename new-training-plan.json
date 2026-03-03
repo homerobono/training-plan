@@ -1,0 +1,165 @@
+{
+  "activities": {
+    "costas": {
+      "name": "Costas & Bíceps",
+      "color": "costas",
+      "iconUrl": "img/biceps.svg",
+      "iconFallback": "<svg fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' d='M3.75 6.75h16.5M3.75 17.25h16.5M5.25 6.75v10.5m13.5-10.5v10.5' /></svg>"
+    },
+    "peito": {
+      "name": "Peito & Ombros",
+      "color": "peito-ombros",
+      "iconUrl": "img/chest.svg",
+      "iconFallback": "<svg fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' d='M3.75 6.75h16.5M3.75 17.25h16.5M5.25 6.75v10.5m13.5-10.5v10.5' /></svg>"
+    },
+    "pernas": {
+      "name": "Pernas",
+      "color": "pernas",
+      "iconUrl": "img/legs.svg",
+      "iconFallback": "<svg fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' d='M12 4a2 2 0 100 4 2 2 0 000-4z' /><path stroke-linecap='round' stroke-linejoin='round' d='M7 21v-4a5 5 0 015-5h0a5 5 0 015 5v4' /><path stroke-linecap='round' stroke-linejoin='round' d='M5 21h14' /></svg>"
+    },
+    "pedal": {
+      "name": "Pedal",
+      "color": "cardio",
+      "iconUrl": "img/bike.svg",
+      "iconFallback": "<svg fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' d='M16.5 7.5l-3.75 3.75M6.75 19.5l3.75-3.75' /><circle cx='8' cy='18' r='3' /><circle cx='16' cy='6' r='3' /></svg>"
+    },
+    "escalada": {
+      "name": "Escalada",
+      "color": "cardio",
+      "iconUrl": "img/climb.svg",
+      "iconFallback": "<svg fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' d='M12 6v6m0 0v6m0-6h6m-6 0H6' /><circle cx='12' cy='4' r='2' /><path stroke-linecap='round' stroke-linejoin='round' d='M10 16l-4 4m8-4l4 4' /></svg>"
+    },
+    "mobilidade": {
+      "name": "Descanso Ativo",
+      "color": "mobilidade",
+      "iconUrl": "img/mobility.svg",
+      "iconFallback": "<svg fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' d='M12 4a2 2 0 100 4 2 2 0 000-4z' /><path stroke-linecap='round' stroke-linejoin='round' d='M15.75 9.75L12 13.5l-3.75-3.75M5.25 21v-3.75a3.75 3.75 0 013.75-3.75h6a3.75 3.75 0 013.75 3.75V21' /></svg>"
+    },
+    "descanso": {
+      "name": "Descanso",
+      "color": "descanso",
+      "iconUrl": "img/rest.svg",
+      "iconFallback": "<svg fill='none' viewBox='0 0 24 24' stroke-width='2' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' d='M6 9h4l-4 6h4m4-6h4l-4 6h4' /></svg>"
+    }
+  },
+  "weeklySchedule": [
+    { "day": "Seg", "activityId": "descanso" },
+    { "day": "Ter", "activityId": "costas" },
+    { "day": "Qua", "activityId": "pedal" },
+    { "day": "Qui", "activityId": "peito" },
+    { "day": "Sex", "activityId": "pernas" },
+    { "day": "Sáb", "activityId": "escalada" },
+    { "day": "Dom", "activityId": "pedal" }
+  ],
+  "sections": [
+  {
+    "id": "dia-a-vertical-estabilidade",
+    "title": "DIA A: FORÇA VERTICAL E ESTABILIDADE",
+    "colorClass": "forca-costas-biceps-section",
+    "columns": [
+      { "key": "name", "title": "Exercício" },
+      { "key": "setsReps", "title": "S x R - D" },
+      { "key": "carga", "title": "Carga" }
+    ],
+    "exercises": [
+      {
+        "id": "barra-fixa-carga",
+        "name": "Barra Fixa (Com Carga)",
+        "setsReps": "4x5 - 120s",
+        "note": "Foco em força pura para puxada de teto. Adicione peso se necessário para falhar na 5ª rep."
+      },
+      {
+        "id": "agachamento-bulgaro",
+        "name": "Agachamento Búlgaro",
+        "setsReps": "3x8 (cada perna) - 60s",
+        "note": "Estabilidade de joelho crucial para MTB e força unilateral para escalada."
+      },
+      {
+        "id": "ohp-halteres",
+        "name": "Desenvolvimento (OHP) c/ Halteres",
+        "setsReps": "3x10 - 60s",
+        "note": "Fortalece e estabiliza os ombros para movimentos acima da cabeça."
+      },
+      {
+        "id": "hanging-leg-raises",
+        "name": "Hanging Leg Raises",
+        "setsReps": "3x12 - 60s",
+        "note": "Core focado em manter o pé na rocha em negativos/teto."
+      }
+    ]
+  },
+  {
+    "id": "dia-b-posterior-tracao",
+    "title": "DIA B: CADEIA POSTERIOR E TRAÇÃO",
+    "colorClass": "forca-pernas-section",
+    "columns": [
+      { "key": "name", "title": "Exercício" },
+      { "key": "setsReps", "title": "S x R - D" },
+      { "key": "carga", "title": "Carga" }
+    ],
+    "exercises": [
+      {
+        "id": "remada-curvada",
+        "name": "Remada Curvada (Barra ou Máq)",
+        "setsReps": "4x8 - 90s",
+        "note": "Tração horizontal. Simula a puxada técnica na rocha e controle do guidão."
+      },
+      {
+        "id": "rdl",
+        "name": "Levantamento Terra Romeno (RDL)",
+        "setsReps": "3x10 - 90s",
+        "note": "Fortalecimento de posteriores e lombar para potência na pedalada."
+      },
+      {
+        "id": "farmers-walk",
+        "name": "Farmer's Walk",
+        "setsReps": "3x45 seg - 60s",
+        "note": "Resistência de dedos e antebraço (agarre)."
+      },
+      {
+        "id": "prancha-dinamica",
+        "name": "Prancha Dinâmica (1 pé / 1 mão)",
+        "setsReps": "3x1 min - 60s",
+        "note": "Estabilidade anti-rotacional no selim e técnica de contra-apoio."
+      }
+    ]
+  },
+  {
+    "id": "dia-c-potencia-antagonistas",
+    "title": "DIA C: POTÊNCIA E ANTAGONISTAS",
+    "colorClass": "forca-peito-ombros-section",
+    "columns": [
+      { "key": "name", "title": "Exercício" },
+      { "key": "setsReps", "title": "S x R - D" },
+      { "key": "carga", "title": "Carga" }
+    ],
+    "exercises": [
+      {
+        "id": "step-up-explosivo",
+        "name": "Step-up Explosivo (Banco)",
+        "setsReps": "3x8 (cada perna) - 60s",
+        "note": "Foco em explosão para arrancadas e transposição de obstáculos no MTB."
+      },
+      {
+        "id": "barra-fixa-variada",
+        "name": "Barra Fixa (Supinada/Neutra)",
+        "setsReps": "3x Máximo - 90s",
+        "note": "Variação de pegada para recrutamento de diferentes fibras musculares."
+      },
+      {
+        "id": "flexao-braco",
+        "name": "Flexão de Braço (Push-ups)",
+        "setsReps": "3x15 - 60s",
+        "note": "Treino de antagonistas (peito/tríceps) para prevenção de lesões."
+      },
+      {
+        "id": "abdominal-canivete",
+        "name": "Abdominal Canivete (V-Ups)",
+        "setsReps": "3x15 - 60s",
+        "note": "Explosão de core para movimentos dinâmicos na escalada."
+      }
+    ]
+  }
+]
+}
