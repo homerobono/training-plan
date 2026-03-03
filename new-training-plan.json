@@ -65,27 +65,27 @@
     "exercises": [
       {
         "id": "barra-fixa-carga",
-        "name": "Barra Fixa (Com Carga)",
+        "name": "Barra Fixa com Carga (Pull-up)",
         "setsReps": "4x5 - 120s",
-        "note": "Foco em força pura para puxada de teto. Adicione peso se necessário para falhar na 5ª rep."
+        "note": "<b>Execução:</b> Pegada pronada, um pouco além dos ombros. Inicie retraindo as escápulas antes de dobrar os cotovelos. Suba até o queixo passar a barra e desça controladamente.<br><b>Dica:</b> Mantenha as pernas juntas e o core contraído (hollow body) para não balançar."
       },
       {
         "id": "agachamento-bulgaro",
         "name": "Agachamento Búlgaro",
-        "setsReps": "3x8 (cada perna) - 60s",
-        "note": "Estabilidade de joelho crucial para MTB e força unilateral para escalada."
+        "setsReps": "3x8 - 60s",
+        "note": "<b>Execução:</b> Um pé no banco atrás, o outro à frente. Desça o quadril verticalmente até o joelho de trás quase tocar o chão.<br><b>Dica:</b> Tronco levemente inclinado à frente para simular a posição de ataque no MTB e recrutar mais glúteo."
       },
       {
         "id": "ohp-halteres",
-        "name": "Desenvolvimento (OHP) c/ Halteres",
+        "name": "Desenvolvimento (OHP) com Halteres",
         "setsReps": "3x10 - 60s",
-        "note": "Fortalece e estabiliza os ombros para movimentos acima da cabeça."
+        "note": "<b>Execução:</b> Sentado ou em pé, empurre os halteres para cima partindo da linha dos ombros. No topo, não trave totalmente os cotovelos.<br><b>Dica:</b> Fundamental para fortalecer os ombros contra lesões de impacto em quedas ou movimentos bruscos na rocha."
       },
       {
         "id": "hanging-leg-raises",
         "name": "Hanging Leg Raises",
         "setsReps": "3x12 - 60s",
-        "note": "Core focado em manter o pé na rocha em negativos/teto."
+        "note": "<b>Execução:</b> Pendurado na barra, eleve as pernas até a altura do quadril sem usar o balanço do corpo.<br><b>Dica:</b> Controle a descida; é nela que você ganha a força de core necessária para 'setar' os pés na parede."
       }
     ]
   },
@@ -101,27 +101,27 @@
     "exercises": [
       {
         "id": "remada-curvada",
-        "name": "Remada Curvada (Barra ou Máq)",
+        "name": "Remada Curvada (Barra ou Máquina)",
         "setsReps": "4x8 - 90s",
-        "note": "Tração horizontal. Simula a puxada técnica na rocha e controle do guidão."
+        "note": "<b>Execução:</b> Tronco inclinado a 45°. Puxe o peso em direção ao umbigo, mantendo os cotovelos próximos ao corpo.<br><b>Dica:</b> Foco em 'esmagar' as escápulas no topo. Simula a puxada de remada técnica na bike."
       },
       {
         "id": "rdl",
         "name": "Levantamento Terra Romeno (RDL)",
         "setsReps": "3x10 - 90s",
-        "note": "Fortalecimento de posteriores e lombar para potência na pedalada."
+        "note": "<b>Execução:</b> Barra rente às pernas, empurrando o quadril para trás até sentir os posteriores alongarem. Joelhos semi-flexionados.<br><b>Dica:</b> Não deixe a coluna curvar. Essencial para suportar horas de pedalada técnica."
       },
       {
         "id": "farmers-walk",
         "name": "Farmer's Walk",
-        "setsReps": "3x45 seg - 60s",
-        "note": "Resistência de dedos e antebraço (agarre)."
+        "setsReps": "3x45s - 60s",
+        "note": "<b>Execução:</b> Segure halteres pesados. Caminhe com postura ereta e passos curtos.<br><b>Dica:</b> Tente segurar os halteres apenas com a falange dos dedos para simular agarras de borda."
       },
       {
         "id": "prancha-dinamica",
-        "name": "Prancha Dinâmica (1 pé / 1 mão)",
-        "setsReps": "3x1 min - 60s",
-        "note": "Estabilidade anti-rotacional no selim e técnica de contra-apoio."
+        "name": "Prancha Dinâmica",
+        "setsReps": "3x1min - 60s",
+        "note": "<b>Execução:</b> Na prancha, tire alternadamente uma mão e toque o ombro oposto, ou tire um pé, sem girar o quadril.<br><b>Dica:</b> Anti-rotação pura. Vital para estabilidade em terrenos de MTB irregulares."
       }
     ]
   },
@@ -138,26 +138,26 @@
       {
         "id": "step-up-explosivo",
         "name": "Step-up Explosivo (Banco)",
-        "setsReps": "3x8 (cada perna) - 60s",
-        "note": "Foco em explosão para arrancadas e transposição de obstáculos no MTB."
+        "setsReps": "3x8 - 60s",
+        "note": "<b>Execução:</b> Suba no banco de forma explosiva, saltando no topo. Desça devagar com a perna de apoio.<br><b>Dica:</b> Toda a força deve vir da perna de cima (potência de pedalada), sem impulso do pé no chão."
       },
       {
-        "id": "barra-fixa-variada",
-        "name": "Barra Fixa (Supinada/Neutra)",
-        "setsReps": "3x Máximo - 90s",
-        "note": "Variação de pegada para recrutamento de diferentes fibras musculares."
+        "id": "chin-up",
+        "name": "Barra Fixa Supinada (Chin-up)",
+        "setsReps": "3xMáx - 90s",
+        "note": "<b>Execução:</b> Palmas voltadas para você. Foco em recrutar bíceps e braquiorradial.<br><b>Dica:</b> Essencial para 'travadas' (lock-offs) em vias de escalada verticais."
       },
       {
-        "id": "flexao-braco",
+        "id": "push-ups",
         "name": "Flexão de Braço (Push-ups)",
         "setsReps": "3x15 - 60s",
-        "note": "Treino de antagonistas (peito/tríceps) para prevenção de lesões."
+        "note": "<b>Execução:</b> Mãos na largura dos ombros, cotovelos a 45°. Peito toca o chão.<br><b>Dica:</b> Trabalha os antagonistas da escalada para evitar a 'postura de escalador' (ombros caídos)."
       },
       {
-        "id": "abdominal-canivete",
+        "id": "v-ups",
         "name": "Abdominal Canivete (V-Ups)",
         "setsReps": "3x15 - 60s",
-        "note": "Explosão de core para movimentos dinâmicos na escalada."
+        "note": "<b>Execução:</b> Deitado, suba o tronco e as pernas simultaneamente para formar um 'V'.<br><b>Dica:</b> Desenvolve força explosiva de abdômen para botes e movimentos dinâmicos na rocha."
       }
     ]
   }
